@@ -5,45 +5,60 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("PAKRESTAURANTS_V1_POSTGRESURL")
 }
 
 model Cuisine {
-  id                String              @id
-  name              String
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime
+  id   String @id @default(cuid())
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   RestaurantCuisine RestaurantCuisine[]
 }
 
 model Dish {
-  id     String @id
-  menuId String
-  name   String
+  id   String @id @default(cuid())
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   Menu   Menu   @relation(fields: [menuId], references: [id])
+  menuId String
 }
 
 model Menu {
-  id           String     @id
-  restaurantId String
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   Restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  Dish         Dish[]
+  restaurantId String
+
+  Dish Dish[]
 }
 
 model Restaurant {
-  name              String
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime
-  address           String?
-  id                String              @id
+  id      String  @id @default(cuid())
+  name    String
+  address String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   Menu              Menu[]
   RestaurantCuisine RestaurantCuisine[]
 }
 
 model RestaurantCuisine {
-  id           String     @id
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   cuisineId    String
   restaurantId String
   Cuisine      Cuisine    @relation(fields: [cuisineId], references: [id])

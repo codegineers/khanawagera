@@ -29,8 +29,10 @@ export type Cuisine = {
  */
 export type Dish = {
   id: string
-  menuId: string
   name: string
+  createdAt: Date
+  updatedAt: Date
+  menuId: string
 }
 
 /**
@@ -39,6 +41,8 @@ export type Dish = {
  */
 export type Menu = {
   id: string
+  createdAt: Date
+  updatedAt: Date
   restaurantId: string
 }
 
@@ -47,11 +51,11 @@ export type Menu = {
  * 
  */
 export type Restaurant = {
+  id: string
   name: string
+  address: string | null
   createdAt: Date
   updatedAt: Date
-  address: string | null
-  id: string
 }
 
 /**
@@ -1994,40 +1998,52 @@ export namespace Prisma {
 
   export type DishMinAggregateOutputType = {
     id: string | null
-    menuId: string | null
     name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    menuId: string | null
   }
 
   export type DishMaxAggregateOutputType = {
     id: string | null
-    menuId: string | null
     name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    menuId: string | null
   }
 
   export type DishCountAggregateOutputType = {
     id: number
-    menuId: number
     name: number
+    createdAt: number
+    updatedAt: number
+    menuId: number
     _all: number
   }
 
 
   export type DishMinAggregateInputType = {
     id?: true
-    menuId?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
+    menuId?: true
   }
 
   export type DishMaxAggregateInputType = {
     id?: true
-    menuId?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
+    menuId?: true
   }
 
   export type DishCountAggregateInputType = {
     id?: true
-    menuId?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
+    menuId?: true
     _all?: true
   }
 
@@ -2111,8 +2127,10 @@ export namespace Prisma {
 
   export type DishGroupByOutputType = {
     id: string
-    menuId: string
     name: string
+    createdAt: Date
+    updatedAt: Date
+    menuId: string
     _count: DishCountAggregateOutputType | null
     _min: DishMinAggregateOutputType | null
     _max: DishMaxAggregateOutputType | null
@@ -2134,9 +2152,11 @@ export namespace Prisma {
 
   export type DishSelect = {
     id?: boolean
-    menuId?: boolean
     name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     Menu?: boolean | MenuArgs
+    menuId?: boolean
   }
 
   export type DishInclude = {
@@ -2903,16 +2923,22 @@ export namespace Prisma {
 
   export type MenuMinAggregateOutputType = {
     id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     restaurantId: string | null
   }
 
   export type MenuMaxAggregateOutputType = {
     id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     restaurantId: string | null
   }
 
   export type MenuCountAggregateOutputType = {
     id: number
+    createdAt: number
+    updatedAt: number
     restaurantId: number
     _all: number
   }
@@ -2920,16 +2946,22 @@ export namespace Prisma {
 
   export type MenuMinAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     restaurantId?: true
   }
 
   export type MenuMaxAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     restaurantId?: true
   }
 
   export type MenuCountAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     restaurantId?: true
     _all?: true
   }
@@ -3014,6 +3046,8 @@ export namespace Prisma {
 
   export type MenuGroupByOutputType = {
     id: string
+    createdAt: Date
+    updatedAt: Date
     restaurantId: string
     _count: MenuCountAggregateOutputType | null
     _min: MenuMinAggregateOutputType | null
@@ -3036,8 +3070,10 @@ export namespace Prisma {
 
   export type MenuSelect = {
     id?: boolean
-    restaurantId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     Restaurant?: boolean | RestaurantArgs
+    restaurantId?: boolean
     Dish?: boolean | DishFindManyArgs
     _count?: boolean | MenuCountOutputTypeArgs
   }
@@ -3813,53 +3849,53 @@ export namespace Prisma {
   }
 
   export type RestaurantMinAggregateOutputType = {
+    id: string | null
     name: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    address: string | null
-    id: string | null
   }
 
   export type RestaurantMaxAggregateOutputType = {
+    id: string | null
     name: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    address: string | null
-    id: string | null
   }
 
   export type RestaurantCountAggregateOutputType = {
+    id: number
     name: number
+    address: number
     createdAt: number
     updatedAt: number
-    address: number
-    id: number
     _all: number
   }
 
 
   export type RestaurantMinAggregateInputType = {
+    id?: true
     name?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
-    address?: true
-    id?: true
   }
 
   export type RestaurantMaxAggregateInputType = {
+    id?: true
     name?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
-    address?: true
-    id?: true
   }
 
   export type RestaurantCountAggregateInputType = {
+    id?: true
     name?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
-    address?: true
-    id?: true
     _all?: true
   }
 
@@ -3942,11 +3978,11 @@ export namespace Prisma {
 
 
   export type RestaurantGroupByOutputType = {
+    id: string
     name: string
+    address: string | null
     createdAt: Date
     updatedAt: Date
-    address: string | null
-    id: string
     _count: RestaurantCountAggregateOutputType | null
     _min: RestaurantMinAggregateOutputType | null
     _max: RestaurantMaxAggregateOutputType | null
@@ -3967,11 +4003,11 @@ export namespace Prisma {
 
 
   export type RestaurantSelect = {
+    id?: boolean
     name?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    address?: boolean
-    id?: boolean
     Menu?: boolean | MenuFindManyArgs
     RestaurantCuisine?: boolean | RestaurantCuisineFindManyArgs
     _count?: boolean | RestaurantCountOutputTypeArgs
@@ -4060,8 +4096,8 @@ export namespace Prisma {
      * // Get first 10 Restaurants
      * const restaurants = await prisma.restaurant.findMany({ take: 10 })
      * 
-     * // Only select the `name`
-     * const restaurantWithNameOnly = await prisma.restaurant.findMany({ select: { name: true } })
+     * // Only select the `id`
+     * const restaurantWithIdOnly = await prisma.restaurant.findMany({ select: { id: true } })
      * 
     **/
     findMany<T extends RestaurantFindManyArgs>(
@@ -5686,8 +5722,10 @@ export namespace Prisma {
 
   export const DishScalarFieldEnum: {
     id: 'id',
-    menuId: 'menuId',
-    name: 'name'
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    menuId: 'menuId'
   };
 
   export type DishScalarFieldEnum = (typeof DishScalarFieldEnum)[keyof typeof DishScalarFieldEnum]
@@ -5695,6 +5733,8 @@ export namespace Prisma {
 
   export const MenuScalarFieldEnum: {
     id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     restaurantId: 'restaurantId'
   };
 
@@ -5721,11 +5761,11 @@ export namespace Prisma {
 
 
   export const RestaurantScalarFieldEnum: {
+    id: 'id',
     name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     address: 'address',
-    id: 'id'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type RestaurantScalarFieldEnum = (typeof RestaurantScalarFieldEnum)[keyof typeof RestaurantScalarFieldEnum]
@@ -5802,16 +5842,20 @@ export namespace Prisma {
     OR?: Enumerable<DishWhereInput>
     NOT?: Enumerable<DishWhereInput>
     id?: StringFilter | string
-    menuId?: StringFilter | string
     name?: StringFilter | string
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
     Menu?: XOR<MenuRelationFilter, MenuWhereInput>
+    menuId?: StringFilter | string
   }
 
   export type DishOrderByWithRelationInput = {
     id?: SortOrder
-    menuId?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     Menu?: MenuOrderByWithRelationInput
+    menuId?: SortOrder
   }
 
   export type DishWhereUniqueInput = {
@@ -5820,8 +5864,10 @@ export namespace Prisma {
 
   export type DishOrderByWithAggregationInput = {
     id?: SortOrder
-    menuId?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    menuId?: SortOrder
     _count?: DishCountOrderByAggregateInput
     _max?: DishMaxOrderByAggregateInput
     _min?: DishMinOrderByAggregateInput
@@ -5832,8 +5878,10 @@ export namespace Prisma {
     OR?: Enumerable<DishScalarWhereWithAggregatesInput>
     NOT?: Enumerable<DishScalarWhereWithAggregatesInput>
     id?: StringWithAggregatesFilter | string
-    menuId?: StringWithAggregatesFilter | string
     name?: StringWithAggregatesFilter | string
+    createdAt?: DateTimeWithAggregatesFilter | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter | Date | string
+    menuId?: StringWithAggregatesFilter | string
   }
 
   export type MenuWhereInput = {
@@ -5841,15 +5889,19 @@ export namespace Prisma {
     OR?: Enumerable<MenuWhereInput>
     NOT?: Enumerable<MenuWhereInput>
     id?: StringFilter | string
-    restaurantId?: StringFilter | string
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
     Restaurant?: XOR<RestaurantRelationFilter, RestaurantWhereInput>
+    restaurantId?: StringFilter | string
     Dish?: DishListRelationFilter
   }
 
   export type MenuOrderByWithRelationInput = {
     id?: SortOrder
-    restaurantId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     Restaurant?: RestaurantOrderByWithRelationInput
+    restaurantId?: SortOrder
     Dish?: DishOrderByRelationAggregateInput
   }
 
@@ -5859,6 +5911,8 @@ export namespace Prisma {
 
   export type MenuOrderByWithAggregationInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     restaurantId?: SortOrder
     _count?: MenuCountOrderByAggregateInput
     _max?: MenuMaxOrderByAggregateInput
@@ -5870,6 +5924,8 @@ export namespace Prisma {
     OR?: Enumerable<MenuScalarWhereWithAggregatesInput>
     NOT?: Enumerable<MenuScalarWhereWithAggregatesInput>
     id?: StringWithAggregatesFilter | string
+    createdAt?: DateTimeWithAggregatesFilter | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter | Date | string
     restaurantId?: StringWithAggregatesFilter | string
   }
 
@@ -5877,21 +5933,21 @@ export namespace Prisma {
     AND?: Enumerable<RestaurantWhereInput>
     OR?: Enumerable<RestaurantWhereInput>
     NOT?: Enumerable<RestaurantWhereInput>
+    id?: StringFilter | string
     name?: StringFilter | string
+    address?: StringNullableFilter | string | null
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
-    address?: StringNullableFilter | string | null
-    id?: StringFilter | string
     Menu?: MenuListRelationFilter
     RestaurantCuisine?: RestaurantCuisineListRelationFilter
   }
 
   export type RestaurantOrderByWithRelationInput = {
+    id?: SortOrder
     name?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    address?: SortOrder
-    id?: SortOrder
     Menu?: MenuOrderByRelationAggregateInput
     RestaurantCuisine?: RestaurantCuisineOrderByRelationAggregateInput
   }
@@ -5901,11 +5957,11 @@ export namespace Prisma {
   }
 
   export type RestaurantOrderByWithAggregationInput = {
+    id?: SortOrder
     name?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    address?: SortOrder
-    id?: SortOrder
     _count?: RestaurantCountOrderByAggregateInput
     _max?: RestaurantMaxOrderByAggregateInput
     _min?: RestaurantMinOrderByAggregateInput
@@ -5915,11 +5971,11 @@ export namespace Prisma {
     AND?: Enumerable<RestaurantScalarWhereWithAggregatesInput>
     OR?: Enumerable<RestaurantScalarWhereWithAggregatesInput>
     NOT?: Enumerable<RestaurantScalarWhereWithAggregatesInput>
+    id?: StringWithAggregatesFilter | string
     name?: StringWithAggregatesFilter | string
+    address?: StringNullableWithAggregatesFilter | string | null
     createdAt?: DateTimeWithAggregatesFilter | Date | string
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
-    address?: StringNullableWithAggregatesFilter | string | null
-    id?: StringWithAggregatesFilter | string
   }
 
   export type RestaurantCuisineWhereInput = {
@@ -5972,18 +6028,18 @@ export namespace Prisma {
   }
 
   export type CuisineCreateInput = {
-    id: string
+    id?: string
     name: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     RestaurantCuisine?: RestaurantCuisineCreateNestedManyWithoutCuisineInput
   }
 
   export type CuisineUncheckedCreateInput = {
-    id: string
+    id?: string
     name: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     RestaurantCuisine?: RestaurantCuisineUncheckedCreateNestedManyWithoutCuisineInput
   }
 
@@ -6004,10 +6060,10 @@ export namespace Prisma {
   }
 
   export type CuisineCreateManyInput = {
-    id: string
+    id?: string
     name: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
   export type CuisineUpdateManyMutationInput = {
@@ -6025,160 +6081,188 @@ export namespace Prisma {
   }
 
   export type DishCreateInput = {
-    id: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Menu: MenuCreateNestedOneWithoutDishInput
   }
 
   export type DishUncheckedCreateInput = {
-    id: string
-    menuId: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    menuId: string
   }
 
   export type DishUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Menu?: MenuUpdateOneRequiredWithoutDishNestedInput
   }
 
   export type DishUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    menuId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    menuId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DishCreateManyInput = {
-    id: string
-    menuId: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    menuId: string
   }
 
   export type DishUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DishUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    menuId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    menuId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MenuCreateInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Restaurant: RestaurantCreateNestedOneWithoutMenuInput
     Dish?: DishCreateNestedManyWithoutMenuInput
   }
 
   export type MenuUncheckedCreateInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     restaurantId: string
     Dish?: DishUncheckedCreateNestedManyWithoutMenuInput
   }
 
   export type MenuUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Restaurant?: RestaurantUpdateOneRequiredWithoutMenuNestedInput
     Dish?: DishUpdateManyWithoutMenuNestedInput
   }
 
   export type MenuUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     restaurantId?: StringFieldUpdateOperationsInput | string
     Dish?: DishUncheckedUpdateManyWithoutMenuNestedInput
   }
 
   export type MenuCreateManyInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     restaurantId: string
   }
 
   export type MenuUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MenuUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     restaurantId?: StringFieldUpdateOperationsInput | string
   }
 
   export type RestaurantCreateInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Menu?: MenuCreateNestedManyWithoutRestaurantInput
     RestaurantCuisine?: RestaurantCuisineCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantUncheckedCreateInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Menu?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
     RestaurantCuisine?: RestaurantCuisineUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     Menu?: MenuUpdateManyWithoutRestaurantNestedInput
     RestaurantCuisine?: RestaurantCuisineUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     Menu?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
     RestaurantCuisine?: RestaurantCuisineUncheckedUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantCreateManyInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type RestaurantUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type RestaurantUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type RestaurantCuisineCreateInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     Cuisine: CuisineCreateNestedOneWithoutRestaurantCuisineInput
     Restaurant: RestaurantCreateNestedOneWithoutRestaurantCuisineInput
   }
 
   export type RestaurantCuisineUncheckedCreateInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     cuisineId: string
     restaurantId: string
   }
@@ -6200,9 +6284,9 @@ export namespace Prisma {
   }
 
   export type RestaurantCuisineCreateManyInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     cuisineId: string
     restaurantId: string
   }
@@ -6317,20 +6401,26 @@ export namespace Prisma {
 
   export type DishCountOrderByAggregateInput = {
     id?: SortOrder
-    menuId?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    menuId?: SortOrder
   }
 
   export type DishMaxOrderByAggregateInput = {
     id?: SortOrder
-    menuId?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    menuId?: SortOrder
   }
 
   export type DishMinOrderByAggregateInput = {
     id?: SortOrder
-    menuId?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    menuId?: SortOrder
   }
 
   export type RestaurantRelationFilter = {
@@ -6350,16 +6440,22 @@ export namespace Prisma {
 
   export type MenuCountOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     restaurantId?: SortOrder
   }
 
   export type MenuMaxOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     restaurantId?: SortOrder
   }
 
   export type MenuMinOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     restaurantId?: SortOrder
   }
 
@@ -6389,27 +6485,27 @@ export namespace Prisma {
   }
 
   export type RestaurantCountOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    address?: SortOrder
-    id?: SortOrder
   }
 
   export type RestaurantMaxOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    address?: SortOrder
-    id?: SortOrder
   }
 
   export type RestaurantMinOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    address?: SortOrder
-    id?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter = {
@@ -6805,16 +6901,16 @@ export namespace Prisma {
   }
 
   export type RestaurantCuisineCreateWithoutCuisineInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     Restaurant: RestaurantCreateNestedOneWithoutRestaurantCuisineInput
   }
 
   export type RestaurantCuisineUncheckedCreateWithoutCuisineInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     restaurantId: string
   }
 
@@ -6856,12 +6952,16 @@ export namespace Prisma {
   }
 
   export type MenuCreateWithoutDishInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Restaurant: RestaurantCreateNestedOneWithoutMenuInput
   }
 
   export type MenuUncheckedCreateWithoutDishInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     restaurantId: string
   }
 
@@ -6877,29 +6977,33 @@ export namespace Prisma {
 
   export type MenuUpdateWithoutDishInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Restaurant?: RestaurantUpdateOneRequiredWithoutMenuNestedInput
   }
 
   export type MenuUncheckedUpdateWithoutDishInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     restaurantId?: StringFieldUpdateOperationsInput | string
   }
 
   export type RestaurantCreateWithoutMenuInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     RestaurantCuisine?: RestaurantCuisineCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantUncheckedCreateWithoutMenuInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     RestaurantCuisine?: RestaurantCuisineUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
@@ -6909,13 +7013,17 @@ export namespace Prisma {
   }
 
   export type DishCreateWithoutMenuInput = {
-    id: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type DishUncheckedCreateWithoutMenuInput = {
-    id: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type DishCreateOrConnectWithoutMenuInput = {
@@ -6934,20 +7042,20 @@ export namespace Prisma {
   }
 
   export type RestaurantUpdateWithoutMenuInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     RestaurantCuisine?: RestaurantCuisineUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantUncheckedUpdateWithoutMenuInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     RestaurantCuisine?: RestaurantCuisineUncheckedUpdateManyWithoutRestaurantNestedInput
   }
 
@@ -6972,17 +7080,23 @@ export namespace Prisma {
     OR?: Enumerable<DishScalarWhereInput>
     NOT?: Enumerable<DishScalarWhereInput>
     id?: StringFilter | string
-    menuId?: StringFilter | string
     name?: StringFilter | string
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
+    menuId?: StringFilter | string
   }
 
   export type MenuCreateWithoutRestaurantInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Dish?: DishCreateNestedManyWithoutMenuInput
   }
 
   export type MenuUncheckedCreateWithoutRestaurantInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Dish?: DishUncheckedCreateNestedManyWithoutMenuInput
   }
 
@@ -6997,16 +7111,16 @@ export namespace Prisma {
   }
 
   export type RestaurantCuisineCreateWithoutRestaurantInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     Cuisine: CuisineCreateNestedOneWithoutRestaurantCuisineInput
   }
 
   export type RestaurantCuisineUncheckedCreateWithoutRestaurantInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     cuisineId: string
   }
 
@@ -7041,6 +7155,8 @@ export namespace Prisma {
     OR?: Enumerable<MenuScalarWhereInput>
     NOT?: Enumerable<MenuScalarWhereInput>
     id?: StringFilter | string
+    createdAt?: DateTimeFilter | Date | string
+    updatedAt?: DateTimeFilter | Date | string
     restaurantId?: StringFilter | string
   }
 
@@ -7061,17 +7177,17 @@ export namespace Prisma {
   }
 
   export type CuisineCreateWithoutRestaurantCuisineInput = {
-    id: string
+    id?: string
     name: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
   export type CuisineUncheckedCreateWithoutRestaurantCuisineInput = {
-    id: string
+    id?: string
     name: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
   export type CuisineCreateOrConnectWithoutRestaurantCuisineInput = {
@@ -7080,20 +7196,20 @@ export namespace Prisma {
   }
 
   export type RestaurantCreateWithoutRestaurantCuisineInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Menu?: MenuCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantUncheckedCreateWithoutRestaurantCuisineInput = {
+    id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
     address?: string | null
-    id: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     Menu?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
@@ -7127,27 +7243,27 @@ export namespace Prisma {
   }
 
   export type RestaurantUpdateWithoutRestaurantCuisineInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     Menu?: MenuUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantUncheckedUpdateWithoutRestaurantCuisineInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    id?: StringFieldUpdateOperationsInput | string
     Menu?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantCuisineCreateManyCuisineInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     restaurantId: string
   }
 
@@ -7173,48 +7289,64 @@ export namespace Prisma {
   }
 
   export type DishCreateManyMenuInput = {
-    id: string
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type DishUpdateWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DishUncheckedUpdateWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DishUncheckedUpdateManyWithoutDishInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MenuCreateManyRestaurantInput = {
-    id: string
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type RestaurantCuisineCreateManyRestaurantInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     cuisineId: string
   }
 
   export type MenuUpdateWithoutRestaurantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Dish?: DishUpdateManyWithoutMenuNestedInput
   }
 
   export type MenuUncheckedUpdateWithoutRestaurantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Dish?: DishUncheckedUpdateManyWithoutMenuNestedInput
   }
 
   export type MenuUncheckedUpdateManyWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RestaurantCuisineUpdateWithoutRestaurantInput = {

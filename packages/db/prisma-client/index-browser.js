@@ -97,12 +97,16 @@ exports.Prisma.CuisineScalarFieldEnum = makeEnum({
 
 exports.Prisma.DishScalarFieldEnum = makeEnum({
   id: 'id',
-  menuId: 'menuId',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  menuId: 'menuId'
 });
 
 exports.Prisma.MenuScalarFieldEnum = makeEnum({
   id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   restaurantId: 'restaurantId'
 });
 
@@ -120,11 +124,11 @@ exports.Prisma.RestaurantCuisineScalarFieldEnum = makeEnum({
 });
 
 exports.Prisma.RestaurantScalarFieldEnum = makeEnum({
+  id: 'id',
   name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   address: 'address',
-  id: 'id'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 });
 
 exports.Prisma.SortOrder = makeEnum({
