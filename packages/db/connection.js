@@ -7,7 +7,6 @@ let prisma
 // the server with every change, but we want to make sure we don't
 // create a new connection to the DB with every change either.
 // in production we'll have a single connection to the DB.
-console.log('process.env', process.env)
 if (process.env.NODE_ENV === 'production') {
 	prisma = getClient()
 } else {
