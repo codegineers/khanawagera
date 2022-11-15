@@ -1,6 +1,4 @@
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient()
+const { prisma } = require('db')
 
 async function seed() {
 	const cuisines = ['Biryani', 'Tea & Coffee']

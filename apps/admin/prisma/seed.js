@@ -1,6 +1,4 @@
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient()
+const { prisma } = require('db')
 
 async function seed() {
 	const name = 'Al-Rehman Biryani'
@@ -16,10 +14,13 @@ async function seed() {
 		},
 	})
 
-	await prisma.category.create({
+	await prisma.menu.create({
 		data: {
-			name: 'Biryani',
-			restaurantId: restaurant.id,
+			Restaurant: {
+				connect: {
+					id: restaurant.id,
+				},
+			},
 		},
 	})
 
