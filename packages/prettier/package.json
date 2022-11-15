@@ -1,11 +1,10 @@
 {
-	"name": "@saudpunjwani101/prettier-config",
+	"name": "@saudpunjwani/prettier-config",
 	"version": "1.0.0",
 	"description": "",
 	"main": "./prettier-config.json",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"publish-manual": "pnpm publish"
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
 	"author": "",
