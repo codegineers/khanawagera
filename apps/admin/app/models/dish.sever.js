@@ -1,4 +1,4 @@
-import { prisma } from '~/db.server'
+import { prisma } from 'db'
 
 export function getDishes(menuId) {
 	return prisma.dish.findMany({
@@ -14,7 +14,7 @@ export function createDish({ name, menuId }) {
 	return prisma.dish.create({
 		data: {
 			name,
-			menu: {
+			Menu: {
 				connect: {
 					id: menuId,
 				},

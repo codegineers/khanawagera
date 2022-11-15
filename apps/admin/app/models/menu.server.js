@@ -1,9 +1,9 @@
-import { prisma } from '~/db.server'
+import { prisma } from 'db'
 
 export function createMenu(restaurantId) {
 	return prisma.menu.create({
 		data: {
-			restaurant: {
+			Restaurant: {
 				connect: {
 					id: restaurantId,
 				},

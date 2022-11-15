@@ -1,4 +1,4 @@
-import { prisma } from '~/db.server'
+import { prisma } from 'db'
 
 export function getRestaurants() {
 	return prisma.restaurant.findMany({
@@ -26,7 +26,7 @@ export function getRestaurant(id) {
 			id: true,
 			name: true,
 			address: true,
-			menu: {
+			Menu: {
 				select: {
 					id: true,
 				},
