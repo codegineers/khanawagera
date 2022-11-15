@@ -1,0 +1,13 @@
+{
+	"name": "pakrestaurants",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"main:dev": "pnpm --filter main dev",
+		"admin:dev": "pnpm --filter admin dev"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

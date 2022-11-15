@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres_pakrestaurants
+    image: postgres:latest
+    restart: always
+    networks:
+      - postgresNetwork
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pakrestaurants_development_v1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+
+networks:
+  postgresNetwork:
+    name: postgres_network
+  
