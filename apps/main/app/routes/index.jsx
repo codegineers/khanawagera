@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 import { filterRestaurants } from "~/models/restaurant.server";
 
 export async function loader({ request }) {
@@ -16,14 +16,9 @@ export default function Index() {
   const { restaurants } = useLoaderData();
 
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        lineHeight: "1.5",
-      }}
-    >
-      <div className="flex flex-1 bg-emerald-400 p-2 text-white">
-        Pak Restaurants
+    <div>
+      <div className="flex flex-1 bg-emerald-400 p-3 text-white">
+        Kia khana hai?
       </div>
       <div className="mt-8 grid grid-cols-12 p-2">
         <Form className="col-span-12" method="get">
@@ -38,18 +33,20 @@ export default function Index() {
         </Form>
       </div>
 
-      <div className="my-8 h-0.5 w-full bg-slate-100" />
+      <div className="my-8 h-0.5 w-full bg-slate-300" />
 
-      <div className="p-2 m-2">{restaurants.length} Restaurants found</div>
+      <div className="p-2 m-1">{restaurants.length} Restaurants found</div>
 
       <div className="grid p-2">
-        {restaurants.map(({ id, name }) => (
-          <div
+        {restaurants.map(({ id, name, cuisine }) => (
+          <Link
             key={id}
-            className="my-1 p-2 cursor-pointer border-b-2 text-slate-700 hover:shadow-md"
+            to={`restaurants/${id}`}
+            className="bg-white my-1 py-2 px-4 cursor-pointer border-b-2 text-slate-700 hover:shadow-md"
           >
-            {name}
-          </div>
+            <div>{name}</div>
+            <div className="text-sm text-slate-600">{cuisine}</div>
+          </Link>
         ))}
       </div>
     </div>
