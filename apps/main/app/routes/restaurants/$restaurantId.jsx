@@ -26,7 +26,7 @@ export default function RestaurantPage() {
             {Cuisine.name} {!index === 0 && "/"}
           </div>
         ))}
-        <div className="text-sm my-2 font-light">{address}</div>
+        <div className="text-sm my-2 font-light text-center">{address}</div>
       </div>
     </div>
   );
