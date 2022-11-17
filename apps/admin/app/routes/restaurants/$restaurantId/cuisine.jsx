@@ -36,18 +36,15 @@ export default function RestaurantCuisine() {
 	return (
 		<div className="text-slate-700">
 			<div>
-				<div>Selected:</div>
-				<div className="mt-2 grid grid-cols-8 grid-rows-2 gap-2">
+				<div className="font-medium">Selected:</div>
+				<ul className="list-inside list-decimal mt-2 grid grid-cols-8 gap-2">
 					{restaurantCuisines.length > 0 &&
 						restaurantCuisines.map(({ cuisine }) => (
-							<div
-								className="col-span-2 py-2 border-2 rounded-sm border-emerald-400 text-center"
-								key={cuisine.id}
-							>
+							<li className="col-span-2 py-2" key={cuisine.id}>
 								{cuisine.name}
-							</div>
+							</li>
 						))}
-				</div>
+				</ul>
 			</div>
 			<hr className="my-8" />
 			{cuisines.map(({ id, name }) => (
