@@ -26,7 +26,7 @@ export function getRestaurant(id) {
 			id: true,
 			name: true,
 			address: true,
-			Menu: {
+			menus: {
 				select: {
 					id: true,
 				},

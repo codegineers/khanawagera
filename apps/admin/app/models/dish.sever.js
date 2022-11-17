@@ -14,7 +14,7 @@ export function createDish({ name, menuId }) {
 	return prisma.dish.create({
 		data: {
 			name,
-			Menu: {
+			menu: {
 				connect: {
 					id: menuId,
 				},

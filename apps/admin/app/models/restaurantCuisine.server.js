@@ -1,9 +1,9 @@
 import { prisma } from 'db'
 
-export function getRestaurantCuisine({ restaurantId }) {
+export function getRestaurantCuisines({ restaurantId }) {
 	return prisma.restaurantCuisine.findMany({
 		select: {
-			Cuisine: {
+			cuisine: {
 				select: {
 					id: true,
 					name: true,
@@ -29,12 +29,12 @@ export async function addRestaurantCuisine({ restaurantId, cuisineId }) {
 	} else {
 		return prisma.restaurantCuisine.create({
 			data: {
-				Restaurant: {
+				restaurant: {
 					connect: {
 						id: restaurantId,
 					},
 				},
-				Cuisine: {
+				cuisine: {
 					connect: {
 						id: cuisineId,
 					},

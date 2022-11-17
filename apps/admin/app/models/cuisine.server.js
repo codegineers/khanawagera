@@ -1,6 +1,6 @@
 import { prisma } from 'db'
 
-export function getCuisine() {
+export function getCuisines() {
 	return prisma.cuisine.findMany({
 		select: {
 			id: true,

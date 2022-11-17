@@ -3,7 +3,7 @@ import { prisma } from 'db'
 export function createMenu(restaurantId) {
 	return prisma.menu.create({
 		data: {
-			Restaurant: {
+			restaurant: {
 				connect: {
 					id: restaurantId,
 				},
