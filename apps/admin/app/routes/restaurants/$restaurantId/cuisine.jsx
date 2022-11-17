@@ -53,14 +53,14 @@ export default function RestaurantCuisine() {
 			{cuisine.map(({ id, name }) => (
 				<div key={`${id}-${name}`}>
 					<input
-						id="cuisine"
+						id={`cuisine-${id}`}
 						name="cuisine"
 						type="checkbox"
 						defaultChecked={existingCuisineIds.includes(id)}
 						onChange={handleCuisine}
 						value={id}
 					/>
-					<label className="ml-2" htmlFor="cuisine">
+					<label className="ml-2" htmlFor={`cuisine-${id}`}>
 						{name}
 					</label>
 				</div>
