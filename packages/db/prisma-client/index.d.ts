@@ -5815,6 +5815,7 @@ export namespace Prisma {
 
   export type CuisineWhereUniqueInput = {
     id?: string
+    name?: string
   }
 
   export type CuisineOrderByWithAggregationInput = {
