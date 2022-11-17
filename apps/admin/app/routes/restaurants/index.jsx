@@ -13,20 +13,24 @@ export default function RestaurantPage() {
 	const restaurants = useLoaderData()
 
 	return (
-		<div className="container px-8">
-			<h2 className="mt-2 text-lg font-semibold text-slate-700">Restaurants</h2>
+		<div>
+			<div className=" bg-emerald-400 p-3 text-white">Restaurants</div>
 
-			<div className="my-4">
-				{restaurants.map(({ id, name }) => (
-					<div key={`${id}-${name}`}>
-						<Link to={`${id}/cuisine`}>{name}</Link>
-					</div>
-				))}
-			</div>
+			<div className="max-w-md mx-auto my-8 bg-white rounded">
+				<div>
+					{restaurants.map(({ id, name }) => (
+						<Link
+							key={`${id}-${name}`}
+							to={`${id}/cuisine`}
+							className="border-b-2 border-slate-100 block py-3 px-4 hover:bg-emerald-300 hover:text-white cursor-pointer active:bg-emerald-500"
+						>
+							{name}
+						</Link>
+					))}
+				</div>
 
-			<div className="my-4">
 				<Link to="new">
-					<Button type="button" primary>
+					<Button type="button" primary full>
 						Add Restaurant
 					</Button>
 				</Link>
