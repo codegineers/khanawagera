@@ -9,7 +9,6 @@ export function getRestaurantById(id) {
       address: true,
       Menu: {
         select: {
-          id: true,
           Dish: {
             select: {
               id: true,
