@@ -15,7 +15,7 @@ export function links() {
 
 export const meta = () => ({
   charset: "utf-8",
-  title: "Kia Khana hai?",
+  title: "Khanawagera",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -27,6 +27,9 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-100">
+        <div className="flex flex-1 bg-emerald-400 p-3 text-white">
+          Khanawagera
+        </div>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

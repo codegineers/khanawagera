@@ -17,9 +17,6 @@ export default function Index() {
 
   return (
     <div>
-      <div className="flex flex-1 bg-emerald-400 p-3 text-white">
-        Kia khana hai?
-      </div>
       <div className="mt-8 grid grid-cols-12 p-2">
         <Form className="col-span-12" method="get">
           <input
