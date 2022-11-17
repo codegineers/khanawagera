@@ -35,6 +35,7 @@ export default function NewRestaurantPage() {
 						className="w-96 border-2 px-2 py-1 mt-2"
 						type="text"
 						name="name"
+						required
 					/>
 				</div>
 				<div className="mt-8">
@@ -43,6 +44,7 @@ export default function NewRestaurantPage() {
 						className="w-96 border-2 px-2 py-1 mt-2"
 						type="text"
 						name="address"
+						required
 					/>
 				</div>
 				<div className="mt-8">
