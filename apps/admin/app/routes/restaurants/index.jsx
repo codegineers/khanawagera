@@ -14,7 +14,7 @@ export default function RestaurantPage() {
 
 	return (
 		<div>
-			<div className=" bg-emerald-400 p-3 text-white">Restaurants</div>
+			<div className="bg-emerald-400 p-3 text-white">Restaurants</div>
 
 			<div className="max-w-md mx-auto my-8 bg-white rounded">
 				<div>
