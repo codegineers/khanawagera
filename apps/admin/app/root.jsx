@@ -7,8 +7,6 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react'
 
-import Sidebar from '~/components/Sidebar'
-
 import styles from './styles/tailwind.css'
 
 export function links() {
