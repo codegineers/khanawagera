@@ -26,7 +26,7 @@ export default function RestaurantDetailPage() {
 					{restaurant.name}
 				</Link>
 			</div>
-			<div className="max-w-3xl my-8 py-2 px-4 mx-auto bg-white rounded">
+			<div className="max-w-lg my-8 py-4 px-8 mx-auto bg-white rounded">
 				<h2 className="mt-2 text-lg font-semibold text-slate-700">
 					{restaurant.name}
 				</h2>
@@ -40,7 +40,7 @@ export default function RestaurantDetailPage() {
 								isActive &&
 								'border-b-2 pb-1 text-emerald-400 border-emerald-400'
 							}
-              w-full col-start-5 text-center hover:text-emerald-300 active:text-emerald-500
+              w-full col-start-1 col-end-6 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
 						to="cuisine"
@@ -48,14 +48,14 @@ export default function RestaurantDetailPage() {
 						Cuisine
 					</NavLink>
 
-					<div className="text-xl text-emerald-300">|</div>
+					<div className="text-xl">|</div>
 					<NavLink
 						className={({ isActive }) =>
 							`${
 								isActive &&
 								'border-b-2 pb-1 text-emerald-400 border-emerald-400 '
 							}
-             w-full col-start-7 text-center hover:text-emerald-300 active:text-emerald-500
+             w-full col-start-7 col-end-12 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
 						to={`menu/${restaurant.menus[0]?.id}`}

@@ -28,13 +28,16 @@ export default function RestaurantMenu() {
 		<div>
 			<div>
 				{dishes.map((dish) => (
-					<div key={dish.id} className="w-56 my-2 rounded">
+					<div
+						key={dish.id}
+						className="border-b-2 border-slate-100 block py-3 px-4 hover:bg-emerald-300 hover:text-white cursor-pointer active:bg-emerald-500"
+					>
 						{dish.name}
 					</div>
 				))}
 			</div>
 			<Link to="?new-dish=true">
-				<Button type="button" primary>
+				<Button type="button" primary full>
 					Add Dish
 				</Button>
 			</Link>
