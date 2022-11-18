@@ -4,11 +4,20 @@ async function seed() {
 	const cuisines = [
 		'Biryani',
 		'Pakistani',
-		'Tea & Coffee',
+		'Chai',
+		'Coffee',
 		'Beverages',
 		'Pizza',
 		'Burgers',
-		'Sandwich',
+		'Sandwiches',
+		'Fast Food',
+		'Steak',
+		'BBQ',
+		'Wraps & Rolls',
+		'Shawarma',
+		'Desserts',
+		'Cakes & Bakery',
+		'Seafood',
 	]
 
 	// cleanup
