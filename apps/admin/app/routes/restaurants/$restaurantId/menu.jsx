@@ -33,7 +33,7 @@ export default function RestaurantMenu() {
 					<Link
 						to={`dishes/${dish.id}`}
 						key={dish.id}
-						className="grid border-b-2 border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white cursor-pointer"
+						className="grid border-b-2 active:bg-emerald-500 border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white cursor-pointer"
 					>
 						<span className="overflow-hidden whitespace-nowrap">
 							{dish.name}
