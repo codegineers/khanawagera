@@ -3,7 +3,6 @@ import {
 	Link,
 	useSearchParams,
 	useOutletContext,
-	useLoaderData,
 } from '@remix-run/react'
 import { redirect } from '@remix-run/node'
 
