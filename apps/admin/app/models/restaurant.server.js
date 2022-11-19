@@ -28,7 +28,22 @@ export function getRestaurant(id) {
 			address: true,
 			menus: {
 				select: {
-					id: true,
+					dishes: {
+						select: {
+							id: true,
+							name: true,
+						},
+					},
+				},
+			},
+			restaurantCuisines: {
+				select: {
+					cuisine: {
+						select: {
+							id: true,
+							name: true,
+						},
+					},
 				},
 			},
 		},

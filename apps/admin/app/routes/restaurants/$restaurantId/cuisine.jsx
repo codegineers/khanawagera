@@ -1,17 +1,12 @@
-import { useSubmit, useLoaderData } from '@remix-run/react'
+import { useSubmit, useLoaderData, useOutletContext } from '@remix-run/react'
 import { json } from '@remix-run/node'
 
 import { getCuisines } from '~/models/cuisine.server'
-import {
-	getRestaurantCuisines,
-	addRestaurantCuisine,
-} from '~/models/restaurantCuisine.server'
+import { addRestaurantCuisine } from '~/models/restaurantCuisine.server'
 
 export async function loader({ params }) {
-	const { restaurantId } = params
 	const cuisines = await getCuisines()
-	const restaurantCuisines = await getRestaurantCuisines({ restaurantId })
-	return json({ cuisines, restaurantCuisines })
+	return json({ cuisines })
 }
 
 export async function action({ request, params }) {
@@ -22,7 +17,10 @@ export async function action({ request, params }) {
 }
 
 export default function RestaurantCuisine() {
-	const { cuisines, restaurantCuisines } = useLoaderData()
+	const { cuisines } = useLoaderData()
+	const { restaurant } = useOutletContext()
+	const { restaurantCuisines } = restaurant
+
 	const submit = useSubmit()
 	const existingCuisineIds = restaurantCuisines.map(({ cuisine }) => cuisine.id)
 

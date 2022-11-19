@@ -58,13 +58,13 @@ export default function RestaurantDetailPage() {
              w-full col-start-7 col-end-12 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
-						to={`menu/${restaurant.menus[0]?.id}`}
+						to="menu"
 					>
 						Menu
 					</NavLink>
 				</div>
 
-				<Outlet />
+				<Outlet context={{ restaurant }} />
 			</div>
 		</div>
 	)
