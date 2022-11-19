@@ -1,10 +1,10 @@
 import { Link, NavLink, useLoaderData, Outlet } from '@remix-run/react'
 import { json } from '@remix-run/node'
 
-import { getRestaurant } from '~/models/restaurant.server'
+import { getRestaurantById } from '~/models/restaurant.server'
 
 export async function loader({ params }) {
-	const restaurant = await getRestaurant(params.restaurantId)
+	const restaurant = await getRestaurantById(params.restaurantId)
 
 	if (!restaurant) {
 		return json('Restaurant not found', { status: 404 })
@@ -13,7 +13,7 @@ export async function loader({ params }) {
 	return json({ restaurant })
 }
 
-export default function RestaurantDetailPage() {
+export default function RestaurantPage() {
 	const { restaurant } = useLoaderData()
 
 	return (
@@ -26,36 +26,33 @@ export default function RestaurantDetailPage() {
 					{restaurant.name}
 				</Link>
 			</div>
-			<div className="max-w-lg my-8 py-4 px-8 mx-auto bg-white rounded">
-				<h2 className="mt-2 text-lg font-semibold text-slate-700">
-					{restaurant.name}
-				</h2>
 
-				<p className="text-sm my-2">Address: {restaurant.address}</p>
-
-				<div className="my-8 grid grid-cols-12 justify-items-center">
+			<div className="max-w-lg my-8 py-4 px-8 mx-auto rounded">
+				<div className="my-8 grid grid-cols-12 grid-flow-col justify-between border-2 divide-x-2">
 					<NavLink
 						className={({ isActive }) =>
-							`${
-								isActive &&
-								'border-b-2 pb-1 text-emerald-400 border-emerald-400'
-							}
-              w-full col-start-1 col-end-6 text-center hover:text-emerald-300 active:text-emerald-500
+							`${isActive && 'bg-white text-emerald-400'}
+              p-2 col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
+            `
+						}
+						to="details"
+					>
+						Details
+					</NavLink>
+					<NavLink
+						className={({ isActive }) =>
+							`${isActive && 'bg-white text-emerald-400'}
+              p-2 col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
 						to="cuisine"
 					>
 						Cuisine
 					</NavLink>
-
-					<div className="text-xl">|</div>
 					<NavLink
 						className={({ isActive }) =>
-							`${
-								isActive &&
-								'border-b-2 pb-1 text-emerald-400 border-emerald-400 '
-							}
-             w-full col-start-7 col-end-12 text-center hover:text-emerald-300 active:text-emerald-500
+							`${isActive && 'bg-white text-emerald-400'}
+             p-2 col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
 						to={`menu/${restaurant.menus[0].id}`}
@@ -63,8 +60,9 @@ export default function RestaurantDetailPage() {
 						Menu
 					</NavLink>
 				</div>
-
-				<Outlet context={{ restaurant }} />
+				<div className="bg-white rounded">
+					<Outlet context={{ restaurant }} />
+				</div>
 			</div>
 		</div>
 	)

@@ -32,7 +32,7 @@ export default function RestaurantCuisine() {
 	}
 
 	return (
-		<div className="text-slate-700">
+		<div className="text-slate-700 p-4">
 			<div>
 				<div className="font-medium">Selected:</div>
 				<ul className="list-inside list-decimal mt-2 grid grid-cols-8 gap-2">
