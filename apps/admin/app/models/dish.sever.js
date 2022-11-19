@@ -10,6 +10,16 @@ export function getDishes(menuId) {
 	})
 }
 
+export function getDishById(id) {
+	return prisma.dish.findFirst({
+		select: {
+			id: true,
+			name: true,
+		},
+		where: { id: id },
+	})
+}
+
 export function createDish({ name, menuId }) {
 	return prisma.dish.create({
 		data: {
@@ -19,6 +29,25 @@ export function createDish({ name, menuId }) {
 					id: menuId,
 				},
 			},
+		},
+	})
+}
+
+export function deleteDish({ id }) {
+	return prisma.dish.delete({
+		where: {
+			id,
+		},
+	})
+}
+
+export function updateDish({ id, name }) {
+	return prisma.dish.update({
+		data: {
+			name,
+		},
+		where: {
+			id,
 		},
 	})
 }
