@@ -1,13 +1,12 @@
 import { json, redirect } from '@remix-run/node'
-import { Form, Link, useLoaderData } from '@remix-run/react'
+import { Form, Link, useParams, useLoaderData } from '@remix-run/react'
 import { deleteDish, getDishById, updateDish } from '../models/dish.sever'
 
 import Button from '~/components/Button'
 
 export async function loader({ params }) {
-	const { restaurantId, menuId } = params
 	const dish = await getDishById(params.dishId)
-	return json({ dish, restaurantId, menuId })
+	return json({ dish })
 }
 
 export async function action({ request, params }) {
@@ -30,7 +29,8 @@ export async function action({ request, params }) {
 }
 
 export default function DishPage() {
-	const { restaurantId, menuId, dish } = useLoaderData()
+	const { dish } = useLoaderData()
+	const { restaurantId, menuId } = useParams()
 	const { name } = dish
 
 	return (
