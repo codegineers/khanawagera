@@ -1,24 +1,5 @@
 import { prisma } from 'db'
 
-export function getRestaurantCuisines({ restaurantId }) {
-	return prisma.restaurantCuisine.findMany({
-		select: {
-			cuisine: {
-				select: {
-					id: true,
-					name: true,
-				},
-			},
-		},
-		where: {
-			restaurantId: restaurantId,
-		},
-		orderBy: {
-			id: 'asc',
-		},
-	})
-}
-
 export async function addRestaurantCuisine({ restaurantId, cuisineId }) {
 	const restaurantCuisine = await getRestaurantCuisineByRestaurantId(
 		restaurantId,
