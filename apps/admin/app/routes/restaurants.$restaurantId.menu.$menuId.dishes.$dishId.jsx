@@ -1,43 +1,63 @@
 import { json, redirect } from '@remix-run/node'
 import { Form, Link, useLoaderData } from '@remix-run/react'
-import { getDishById, updateDish } from '../models/dish.sever'
+import { deleteDish, getDishById, updateDish } from '../models/dish.sever'
 
 import Button from '~/components/Button'
 
 export async function loader({ params }) {
-	const { restaurantId } = params
+	const { restaurantId, menuId } = params
 	const dish = await getDishById(params.dishId)
-	return json({ dish, restaurantId })
+	return json({ dish, restaurantId, menuId })
 }
 
 export async function action({ request, params }) {
-	const { dishId, restaurantId } = params
+	const { restaurantId, menuId, dishId } = params
 	const formData = await request.formData()
-	const name = formData.get('dish-name')
-	await updateDish({ id: dishId, name })
-	return redirect(`/restaurants/${restaurantId}/menu`)
+
+	const formType = formData.get('type')
+	switch (formType) {
+		case 'delete':
+			await deleteDish({ id: dishId })
+			break
+
+		case 'edit':
+			const dishName = formData.get('dish-name')
+			await updateDish({ id: dishId, name: dishName })
+			break
+	}
+
+	return redirect(`/restaurants/${restaurantId}/menu/${menuId}`)
 }
 
 export default function DishPage() {
-	const { dish, restaurantId } = useLoaderData()
+	const { restaurantId, menuId, dish } = useLoaderData()
 	const { name } = dish
 
 	return (
 		<>
-			<div className=" bg-emerald-400 text-white flex items-center">
+			<div className="grid grid-flow-col justify-between content-between bg-emerald-400 text-white">
 				<Link
-					to={`/restaurants/${restaurantId}/menu`}
+					to={`/restaurants/${restaurantId}/menu/${menuId}`}
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
 				>
 					{name}
 				</Link>
+				<Form method="post">
+					<button
+						name="type"
+						value="delete"
+						type="submit"
+						className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
+					>
+						Delete
+					</button>
+				</Form>
 			</div>
 			<div className="max-w-lg my-8 py-4 px-4 mx-auto bg-white rounded">
 				<Form method="post">
 					<div className="p-4">
-						<label htmlFor="dish-name" className="text-sm font-medium">
-							Name
-						</label>
+						<label htmlFor="dish-name" className="text-sm font-medium"></label>
+						Name
 						<input
 							id="dish-name"
 							type="text"
@@ -50,7 +70,7 @@ export default function DishPage() {
 					</div>
 					<div className="grid border-t-2 text-slate-700 mt-4 mx-4 py-4">
 						<div>
-							<Button type="submit" primary full>
+							<Button name="type" value="edit" type="submit" primary full>
 								Save
 							</Button>
 						</div>

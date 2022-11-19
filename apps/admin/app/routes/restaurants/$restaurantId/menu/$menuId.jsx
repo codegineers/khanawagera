@@ -14,7 +14,7 @@ import { createDish } from '~/models/dish.sever'
 export async function action({ request, params }) {
 	const { menuId, restaurantId } = params
 	const formData = await request.formData()
-	const name = formData.get('dish')
+	const name = formData.get('dish-name')
 	await createDish({ name, menuId })
 
 	return redirect(`/restaurants/${restaurantId}/menu/${menuId}`)
