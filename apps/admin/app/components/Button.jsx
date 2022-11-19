@@ -1,5 +1,7 @@
 export default function Button({
 	type,
+	name,
+	value,
 	onClick,
 	children,
 	primary,
@@ -11,6 +13,8 @@ export default function Button({
 	return (
 		<button
 			type={type}
+			name={name}
+			value={value}
 			onClick={onClick}
 			className={`text-white text-ellipsis whitespace-nowrap w-48 py-2 px-4 border-2
         ${
