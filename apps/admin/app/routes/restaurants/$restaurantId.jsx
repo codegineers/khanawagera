@@ -45,9 +45,9 @@ export default function RestaurantPage() {
               p-2 col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
-						to="cuisine"
+						to="cuisines"
 					>
-						Cuisine
+						Cuisines
 					</NavLink>
 					<NavLink
 						className={({ isActive }) =>

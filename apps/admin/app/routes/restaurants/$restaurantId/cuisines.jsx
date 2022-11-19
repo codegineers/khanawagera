@@ -16,7 +16,7 @@ export async function action({ request, params }) {
 	return await addRestaurantCuisine({ restaurantId, cuisineId })
 }
 
-export default function RestaurantCuisine() {
+export default function RestaurantCuisines() {
 	const { cuisines } = useLoaderData()
 	const { restaurant } = useOutletContext()
 	const { restaurantCuisines } = restaurant
