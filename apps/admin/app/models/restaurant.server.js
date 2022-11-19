@@ -19,9 +19,20 @@ export function createRestaurant({ name, address }) {
 	})
 }
 
-export function getRestaurant(id) {
+export function updateRestaurant({ id, name, address }) {
+	return prisma.restaurant.update({
+		data: {
+			name,
+			address,
+		},
+		where: {
+			id,
+		},
+	})
+}
+
+export function getRestaurantById(id) {
 	return prisma.restaurant.findFirst({
-		where: { id },
 		select: {
 			id: true,
 			name: true,
@@ -48,5 +59,6 @@ export function getRestaurant(id) {
 				},
 			},
 		},
+		where: { id },
 	})
 }
