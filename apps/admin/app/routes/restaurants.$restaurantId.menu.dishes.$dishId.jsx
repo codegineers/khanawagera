@@ -32,10 +32,10 @@ export default function DishPage() {
 					{name}
 				</Link>
 			</div>
-			<div className="max-w-lg my-8 py-4 px-8 mx-auto bg-white rounded">
+			<div className="max-w-lg my-8 py-4 px-4 mx-auto bg-white rounded">
 				<Form method="post">
 					<div className="p-4">
-						<label htmlFor="dish" className="text-sm font-medium">
+						<label htmlFor="dish-name" className="text-sm font-medium">
 							Name
 						</label>
 						<input
