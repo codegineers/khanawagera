@@ -16,7 +16,7 @@ export default function RestaurantPage() {
 		<div>
 			<div className="bg-emerald-400 py-3 px-2 text-white">Restaurants</div>
 
-			<div className="max-w-md mx-auto my-8 bg-white rounded">
+			<div className="max-w-md mx-auto my-8 bg-white rounded shadow">
 				<div>
 					{restaurants.map(({ id, name }) => (
 						<Link

@@ -35,7 +35,7 @@ export default function DishPage() {
 
 	return (
 		<>
-			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white">
+			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white shadow rounded">
 				<Link
 					to={`/restaurants/${restaurantId}/menu/${menuId}`}
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"

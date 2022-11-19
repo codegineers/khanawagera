@@ -62,7 +62,7 @@ export default function RestaurantPage() {
 						Menu
 					</NavLink>
 				</div>
-				<div className="bg-white rounded">
+				<div className="bg-white rounded shadow">
 					<Outlet context={{ restaurant }} />
 				</div>
 			</div>
