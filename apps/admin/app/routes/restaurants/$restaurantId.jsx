@@ -31,7 +31,7 @@ export default function RestaurantPage() {
 				<div className="my-8 grid grid-cols-12 gap-1 grid-flow-col shadow">
 					<NavLink
 						className={({ isActive }) =>
-							`${isActive && 'text-emerald-400 border-b-2 border-b-emerald-400'}
+							`${isActive && 'text-emerald-400 border-b-4 border-b-emerald-400'}
               p-2 bg-white col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
@@ -42,7 +42,7 @@ export default function RestaurantPage() {
 					<NavLink
 						className={({ isActive }) =>
 							`${
-								isActive && ' text-emerald-400 border-b-2 border-b-emerald-400'
+								isActive && ' text-emerald-400 border-b-4 border-b-emerald-400'
 							}
               p-2 bg-white col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
@@ -53,7 +53,7 @@ export default function RestaurantPage() {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) =>
-							`${isActive && 'text-emerald-400 border-b-2 border-b-emerald-400'}
+							`${isActive && 'text-emerald-400 border-b-4 border-b-emerald-400'}
              p-2 bg-white col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
