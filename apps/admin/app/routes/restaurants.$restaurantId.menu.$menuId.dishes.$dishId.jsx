@@ -56,8 +56,9 @@ export default function DishPage() {
 			<div className="max-w-lg my-8 py-4 px-4 mx-auto bg-white rounded">
 				<Form method="post">
 					<div className="p-4">
-						<label htmlFor="dish-name" className="text-sm font-medium"></label>
-						Name
+						<label htmlFor="dish-name" className="text-sm font-medium">
+							Name
+						</label>
 						<input
 							id="dish-name"
 							type="text"
