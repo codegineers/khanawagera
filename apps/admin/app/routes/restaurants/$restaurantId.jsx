@@ -18,7 +18,7 @@ export default function RestaurantPage() {
 
 	return (
 		<div>
-			<div className=" bg-emerald-400 text-white flex items-center">
+			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white">
 				<Link
 					to="/restaurants"
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
@@ -27,7 +27,7 @@ export default function RestaurantPage() {
 				</Link>
 			</div>
 
-			<div className="max-w-lg my-8 py-4 px-8 mx-auto rounded">
+			<div className="max-w-lg py-3 px-8 mx-auto rounded">
 				<div className="my-8 grid grid-cols-12 grid-flow-col justify-between border-2 divide-x-2">
 					<NavLink
 						className={({ isActive }) =>
