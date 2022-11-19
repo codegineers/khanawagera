@@ -32,28 +32,17 @@ export default function RestaurantCuisines() {
 	}
 
 	return (
-		<div className="text-slate-700 p-4">
-			<div>
-				<div className="font-medium">Selected:</div>
-				<ul className="list-inside list-decimal mt-2 grid grid-cols-8 gap-2">
-					{restaurantCuisines.length > 0 &&
-						restaurantCuisines.map(({ cuisine }) => (
-							<li className="col-span-2 py-2" key={cuisine.id}>
-								{cuisine.name}
-							</li>
-						))}
-				</ul>
-			</div>
-			<hr className="my-8" />
+		<div className="text-slate-700 p-4 space-y-1">
 			{cuisines.map(({ id, name }) => (
 				<div key={`${id}-${name}`}>
 					<input
 						id={`cuisine-${id}`}
 						name="cuisine"
 						type="checkbox"
-						defaultChecked={existingCuisineIds.includes(id)}
+						checked={existingCuisineIds.includes(id)}
 						onChange={handleCuisine}
 						value={id}
+						className="form-checkbox text-emerald-400 rounded border-gray-300 focus:ring-emerald-400 dark:focus:ring-emerald-400"
 					/>
 					<label className="ml-2" htmlFor={`cuisine-${id}`}>
 						{name}
