@@ -7,7 +7,6 @@ importers:
 
   apps/admin:
     specifiers:
-      '@prisma/client': 4.5.0
       '@remix-run/dev': ^1.7.5
       '@remix-run/eslint-config': ^1.7.5
       '@remix-run/express': ^1.7.5
@@ -19,7 +18,6 @@ importers:
       concurrently: 7.5.0
       cross-env: ^7.0.3
       db: workspace:1.0.0
-      dotenv: ^16.0.2
       eslint: ^8.23.1
       express: ^4.18.1
       isbot: ^3.5.4
@@ -27,13 +25,11 @@ importers:
       nodemon: ^2.0.19
       npm-run-all: ^4.1.5
       postcss: 8.4.18
-      prisma: 4.5.0
       react: ^18.2.0
       react-dom: ^18.2.0
       tailwindcss: 3.2.2
       tiny-invariant: 1.3.1
     dependencies:
-      '@prisma/client': 4.5.0_prisma@4.5.0
       '@remix-run/express': 1.7.5_cwk4saenierp7pa7l5cpbeswge
       '@remix-run/node': 1.7.5_biqbaboplfbrettd7655fr4n2y
       '@remix-run/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
@@ -52,12 +48,10 @@ importers:
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.2
       autoprefixer: 10.4.13_postcss@8.4.18
       concurrently: 7.5.0
-      dotenv: 16.0.3
       eslint: 8.27.0
       nodemon: 2.0.20
       npm-run-all: 4.1.5
       postcss: 8.4.18
-      prisma: 4.5.0
       tailwindcss: 3.2.2_postcss@8.4.18
 
   apps/main:
@@ -1641,6 +1635,7 @@ packages:
   /@prisma/engines/4.5.0:
     resolution: {integrity: sha512-4t9ir2SbQQr/wMCNU4YpHWp5hU14J2m3wHUZnGJPpmBF8YtkisxyVyQsKd1e6FyLTaGq8LOLhm6VLYHKqKNm+g==}
     requiresBuild: true
+    dev: false
 
   /@remix-run/dev/1.7.5_67odqug3q6zvwws4422s5yrks4:
     resolution: {integrity: sha512-z/HEMi6e2eO6DvCrH+rNbqNohD5m1QMzVfXoIG976jw6Pn72PTaiGFNtDc5vNB2IjVuRAu1j0X9TbWLmU/+fOw==}
@@ -6692,6 +6687,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.5.0
+    dev: false
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
