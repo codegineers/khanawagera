@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("PAKRESTAURANTS_V1_POSTGRESURL")
+  url      = env("KHANAWAGERA_PRODUCTION_V1_POSTGRESURL")
 }
 
 model Cuisine {

@@ -17,13 +17,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function getClient() {
-	const { PAKRESTAURANTS_V1_POSTGRESURL } = process.env
+	const { KHANAWAGERA_PRODUCTION_V1_POSTGRESURL } = process.env
+
 	invariant(
-		typeof PAKRESTAURANTS_V1_POSTGRESURL === 'string',
-		'PAKRESTAURANTS_V1_POSTGRESURL env var not set'
+		typeof KHANAWAGERA_PRODUCTION_V1_POSTGRESURL === 'string',
+		'KHANAWAGERA_PRODUCTION_V1_POSTGRESURL env var not set'
 	)
 
-	const databaseUrl = new URL(PAKRESTAURANTS_V1_POSTGRESURL)
+	const databaseUrl = new URL(KHANAWAGERA_PRODUCTION_V1_POSTGRESURL)
 
 	// const isLocalHost = databaseUrl.hostname === 'localhost'
 
@@ -40,7 +41,9 @@ function getClient() {
 	// 	}
 	// }
 
-	console.log(`🔌 setting up prisma client to ${databaseUrl.host}`)
+	console.log(
+		`🔌 setting up prisma client to ${databaseUrl.host} on port ${databaseUrl.port}`
+	)
 	// NOTE: during development if you change anything in this function, remember
 	// that this only runs once per server restart and won't automatically be
 	// re-run per request like everything else is. So if you need to change
