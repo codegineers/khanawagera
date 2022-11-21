@@ -17,14 +17,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function getClient() {
-	const { KHANAWAGERA_PRODUCTION_V1_POSTGRESURL } = process.env
+	const { KHANAWAGERA_V1_POSTGRESURL } = process.env
 
 	invariant(
-		typeof KHANAWAGERA_PRODUCTION_V1_POSTGRESURL === 'string',
-		'KHANAWAGERA_PRODUCTION_V1_POSTGRESURL env var not set'
+		typeof KHANAWAGERA_V1_POSTGRESURL === 'string',
+		'KHANAWAGERA_V1_POSTGRESURL env var not set'
 	)
 
-	const databaseUrl = new URL(KHANAWAGERA_PRODUCTION_V1_POSTGRESURL)
+	const databaseUrl = new URL(KHANAWAGERA_V1_POSTGRESURL)
 
 	// const isLocalHost = databaseUrl.hostname === 'localhost'
 
