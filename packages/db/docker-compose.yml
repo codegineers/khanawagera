@@ -1,15 +1,15 @@
 version: "3.9"
 services:
-  postgres:
-    container_name: postgres_pakrestaurants
+  khanwagera_db:
+    container_name: khanawagera_db
     image: postgres:latest
     restart: always
     networks:
-      - postgresNetwork
+      - postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=pakrestaurants_development_v1
+      - POSTGRES_DB=khanawagera_development_v1
     ports:
       - "5432:5432"
     volumes:
@@ -19,6 +19,6 @@ volumes:
   postgres-data:
 
 networks:
-  postgresNetwork:
-    name: postgres_network
+  postgres:
+    name: postgres
   
