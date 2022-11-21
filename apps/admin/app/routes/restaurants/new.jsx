@@ -11,7 +11,6 @@ export async function action({ request }) {
 	const address = formData.get('address')
 
 	const restaurant = { name, address }
-	console.log('creating new restaurant')
 	const newRestaurant = await createRestaurant(restaurant)
 
 	if (newRestaurant) {

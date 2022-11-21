@@ -12,7 +12,6 @@ export default function RestaurantPage() {
   const { restaurant } = useLoaderData();
   const { name, address, Menu, RestaurantCuisine } = restaurant;
   const { Dish } = Menu[0];
-  console.log(Dish);
   return (
     <div>
       <div className="grid bg-white py-4 px-4 rounded max-w-xl mx-auto justify-items-center my-8">
