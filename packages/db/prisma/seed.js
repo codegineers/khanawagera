@@ -1,6 +1,21 @@
 const { prisma } = require('../connection')
 
 async function seed() {
+	const name = 'Al Rehman Biryani'
+
+	await prisma.restaurant.delete({ where: { name: name } }).catch(() => {
+		// no worries if it doesn't exist yet
+	})
+
+	await prisma.restaurant.create({
+		data: {
+			name,
+			menus: {
+				create: [{}],
+			},
+		},
+	})
+
 	const cuisines = [
 		'Biryani',
 		'Pakistani',
@@ -37,7 +52,7 @@ async function seed() {
 		})
 	}
 
-	console.log(`Cuisines has been seeded. 🌱`)
+	console.log(`DB has been seeded. 🌱`)
 }
 
 seed()
