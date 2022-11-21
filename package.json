@@ -5,7 +5,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:dev": "pnpm --filter main dev",
-		"admin:dev": "pnpm --filter new-admin dev",
+		"admin:dev": "pnpm --filter admin dev",
 		"prisma:generate": "cd ./packages/db && npx prisma generate"
 	},
 	"keywords": [],
