@@ -7,9 +7,9 @@ export function getRestaurantById(id) {
       id: true,
       name: true,
       address: true,
-      Menu: {
+      menus: {
         select: {
-          Dish: {
+          dishes: {
             select: {
               id: true,
               name: true,
@@ -17,9 +17,9 @@ export function getRestaurantById(id) {
           },
         },
       },
-      RestaurantCuisine: {
+      restaurantCuisines: {
         select: {
-          Cuisine: {
+          cuisine: {
             select: {
               id: true,
               name: true,
@@ -35,10 +35,9 @@ export function filterRestaurants({ searchQuery }) {
   const filterBy = `%${searchQuery}%`;
 
   return prisma.$queryRaw`
-    SELECT r.id,
-    r.name,
-    c.name as cuisine
-    FROM public."Restaurant" as r
+    select r.id,
+    r.name
+    from public."Restaurant" as r
     left outer join public."Menu" as m
     on r.id = m."restaurantId"
     left outer join public."Dish" as d
@@ -46,10 +45,10 @@ export function filterRestaurants({ searchQuery }) {
     left outer join public."RestaurantCuisine" as rc
     on r.id = rc."restaurantId"
     left outer join public."Cuisine" as c
-    on c.id = rc."cuisineId"
-    WHERE d.name ilike ${filterBy}
-    or r.name ilike ${filterBy}
+    on rc."cuisineId" = c.id
+    where d.name ilike ${filterBy}
     or c.name ilike ${filterBy}
-    group by r.id, r.name, c.name
+    or r.name ilike ${filterBy}
+    group by r.id, r.name
   `;
 }

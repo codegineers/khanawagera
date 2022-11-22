@@ -10,15 +10,15 @@ export async function loader({ params }) {
 
 export default function RestaurantPage() {
   const { restaurant } = useLoaderData();
-  const { name, address, Menu, RestaurantCuisine } = restaurant;
-  const { Dish } = Menu[0];
+  const { name, address, menus, restaurantCuisines } = restaurant;
+  const { dishes } = menus[0];
   return (
     <div>
       <div className="grid bg-white py-4 px-4 rounded max-w-xl mx-auto justify-items-center my-8">
         <h1 className="my-2 text-2xl font-bold uppercase">{name}</h1>
-        {RestaurantCuisine.map(({ Cuisine }, index) => (
-          <div key={Cuisine.id} className="text-sm my-2 font-light">
-            {Cuisine.name} {!index === 0 && "/"}
+        {restaurantCuisines.map(({ cuisine }, index) => (
+          <div key={cuisine.id} className="text-sm my-2 font-light">
+            {cuisine.name} {!index === 0 && "/"}
           </div>
         ))}
         <div className="text-sm my-2 font-light text-center">{address}</div>
@@ -28,7 +28,7 @@ export default function RestaurantPage() {
         <h3 className="text-xl font-medium border-b-2 border-emerald-400 pb-2 mb-4 uppercase">
           What to eat
         </h3>
-        {Dish.map(({ id, name }, index) => (
+        {dishes.map(({ id, name }, index) => (
           <div
             className="my-2 text-slate-700 border-b-2 border-slate-100 pb-2"
             key={id}

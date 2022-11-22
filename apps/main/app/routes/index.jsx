@@ -14,7 +14,6 @@ export async function loader({ request }) {
 
 export default function Index() {
   const { restaurants } = useLoaderData();
-
   return (
     <div>
       <div className="mt-8 grid grid-cols-12 p-2">
@@ -35,14 +34,14 @@ export default function Index() {
       <div className="p-2 m-1">{restaurants.length} Restaurants found</div>
 
       <div className="grid p-2">
-        {restaurants.map(({ id, name, cuisine }) => (
+        {restaurants.map(({ id, name, cuisines }) => (
           <Link
             key={id}
             to={`restaurants/${id}`}
             className="bg-white my-1 py-2 px-4 cursor-pointer border-b-2 text-slate-700 hover:shadow-md"
           >
             <div>{name}</div>
-            <div className="text-sm text-slate-600">{cuisine}</div>
+            <div className="text-sm text-slate-600">{cuisines}</div>
           </Link>
         ))}
       </div>
