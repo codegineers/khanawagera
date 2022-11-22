@@ -1,4 +1,3 @@
-import { redirect } from '@remix-run/node'
 import { Form, useOutletContext } from '@remix-run/react'
 
 import Button from '~/components/Button'
@@ -11,13 +10,11 @@ export async function action({ request, params }) {
 	const name = formData.get('name')
 	const address = formData.get('address')
 
-	await updateRestaurant({
+	return await updateRestaurant({
 		id: restaurantId,
 		name,
 		address,
 	})
-
-	return redirect(`restaurants/${restaurantId}/details`)
 }
 
 export default function RestaurantDetailsPage() {
