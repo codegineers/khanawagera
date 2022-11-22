@@ -40,10 +40,16 @@ export function getRestaurantById(id) {
 			menus: {
 				select: {
 					id: true,
-					dishes: {
+					categories: {
 						select: {
 							id: true,
 							name: true,
+							dishes: {
+								select: {
+									id: true,
+									name: true,
+								},
+							},
 						},
 					},
 				},
