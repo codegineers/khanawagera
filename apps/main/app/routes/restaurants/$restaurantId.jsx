@@ -14,7 +14,7 @@ export default function RestaurantPage() {
   const { dishes } = menus[0];
   return (
     <div>
-      <div className="grid bg-white py-4 px-4 rounded max-w-xl mx-auto justify-items-center my-8">
+      <div className="grid bg-white py-4 px-4 rounded max-w-md mx-auto justify-items-center my-8">
         <h1 className="my-2 text-2xl font-bold uppercase">{name}</h1>
         <div className="flex space-x-1">
           {restaurantCuisines.map(({ cuisine }, index) => (
@@ -30,18 +30,20 @@ export default function RestaurantPage() {
         <div className="text-sm my-2 font-light text-center">{address}</div>
       </div>
 
-      <div className="bg-white py-4 px-4 rounded max-w-xl mx-auto my-8">
-        <h3 className="text-xl font-medium border-b-2 border-emerald-400 pb-2 mb-4 uppercase">
+      <div className="bg-white rounded max-w-md mx-auto my-8">
+        <h3 className="text-xl p-4 font-medium border-b-2 border-emerald-400 pb-2 uppercase">
           What to eat
         </h3>
-        {dishes.map(({ id, name }, index) => (
-          <div
-            className="my-2 text-slate-700 border-b-2 border-slate-100 pb-2"
-            key={id}
-          >
-            {name}
-          </div>
-        ))}
+        <div>
+          {dishes.map(({ id, name }) => (
+            <div
+              key={id}
+              className="border-b-2 border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
+            >
+              <span className="overflow-hidden whitespace-nowrap">{name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
