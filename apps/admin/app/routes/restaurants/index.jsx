@@ -28,11 +28,13 @@ export default function RestaurantPage() {
 						</Link>
 					))}
 				</div>
-
 				<Link to="new">
-					<Button type="button" primary full>
-						Add Restaurant
-					</Button>
+					<button
+						type="button"
+						className="font-bold border-b-2 text-slate-400 w-full text-left px-4 py-3 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
+					>
+						Add new restaurant
+					</button>
 				</Link>
 			</div>
 
