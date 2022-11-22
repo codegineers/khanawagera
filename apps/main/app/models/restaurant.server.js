@@ -9,10 +9,16 @@ export function getRestaurantById(id) {
       address: true,
       menus: {
         select: {
-          dishes: {
+          categories: {
             select: {
               id: true,
               name: true,
+              dishes: {
+                select: {
+                  id: true,
+                  name: true,
+                },
+              },
             },
           },
         },
@@ -40,12 +46,10 @@ export function filterRestaurants({ searchQuery }) {
     from public."Restaurant" as r
     left outer join public."Menu" as m
     on r.id = m."restaurantId"
+    left outer join public."Category" as c
+    on m.id = c."menuId"
     left outer join public."Dish" as d
-    on m.id = d."menuId"
-    left outer join public."RestaurantCuisine" as rc
-    on r.id = rc."restaurantId"
-    left outer join public."Cuisine" as c
-    on rc."cuisineId" = c.id
+    on c.id = d."categoryId"
     where d.name ilike ${filterBy}
     or c.name ilike ${filterBy}
     or r.name ilike ${filterBy}

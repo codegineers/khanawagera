@@ -11,7 +11,7 @@ export async function loader({ params }) {
 export default function RestaurantPage() {
   const { restaurant } = useLoaderData();
   const { name, address, menus, restaurantCuisines } = restaurant;
-  const { dishes } = menus[0];
+  const { categories } = menus[0];
   return (
     <div>
       <div className="grid bg-white py-4 px-4 rounded max-w-md mx-auto justify-items-center my-8">
@@ -35,13 +35,27 @@ export default function RestaurantPage() {
           What to eat
         </h3>
         <div>
-          {dishes.map(({ id, name }) => (
-            <div
-              key={id}
-              className="border-b-2 border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
-            >
-              <span className="overflow-hidden whitespace-nowrap">{name}</span>
-            </div>
+          {categories.map(({ id, name, dishes }) => (
+            <>
+              <div
+                key={id}
+                className="border-b-2 font-bold border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
+              >
+                <span className="overflow-hidden whitespace-nowrap">
+                  {name}
+                </span>
+              </div>
+              {dishes.map(({ id, name }) => (
+                <div
+                  key={id}
+                  className="border-b-2 border-slate-100 py-3 px-6 hover:bg-emerald-300 hover:text-white"
+                >
+                  <span className="overflow-hidden whitespace-nowrap">
+                    {name}
+                  </span>
+                </div>
+              ))}
+            </>
           ))}
         </div>
       </div>
