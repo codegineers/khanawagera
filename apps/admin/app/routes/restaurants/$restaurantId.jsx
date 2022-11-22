@@ -57,7 +57,7 @@ export default function RestaurantPage() {
              p-2 bg-white col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
-						to={`menu/${restaurant.menus[0].id}`}
+						to={`menus/${restaurant.menus[0].id}`}
 					>
 						Menu
 					</NavLink>

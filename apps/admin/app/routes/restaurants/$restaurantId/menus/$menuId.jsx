@@ -29,21 +29,21 @@ export default function RestaurantMenu() {
 	return (
 		<div>
 			<div>
-				{menus[0].dishes.map((dish) => (
+				{menus[0].categories.map((category) => (
 					<Link
-						to={`dishes/${dish.id}`}
-						key={dish.id}
+						to={`categories/${category.id}`}
+						key={category.id}
 						className="border-b-2 active:bg-emerald-500 border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white cursor-pointer"
 					>
 						<span className="overflow-hidden whitespace-nowrap">
-							{dish.name}
+							{category.name}
 						</span>
 					</Link>
 				))}
 			</div>
-			<Link to="?new-dish=true">
+			<Link to={`categories/new`}>
 				<Button type="button" primary full>
-					Add Dish
+					Add Category
 				</Button>
 			</Link>
 			<Outlet />
