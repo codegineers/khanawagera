@@ -16,11 +16,17 @@ export default function RestaurantPage() {
     <div>
       <div className="grid bg-white py-4 px-4 rounded max-w-xl mx-auto justify-items-center my-8">
         <h1 className="my-2 text-2xl font-bold uppercase">{name}</h1>
-        {restaurantCuisines.map(({ cuisine }, index) => (
-          <div key={cuisine.id} className="text-sm my-2 font-light">
-            {cuisine.name} {!index === 0 && "/"}
-          </div>
-        ))}
+        <div className="flex space-x-1">
+          {restaurantCuisines.map(({ cuisine }, index) => (
+            <span
+              key={cuisine.id}
+              className="space-x-1 text-sm my-2 font-light"
+            >
+              {cuisine.name}
+              {index !== restaurantCuisines.length - 1 && ","}
+            </span>
+          ))}
+        </div>
         <div className="text-sm my-2 font-light text-center">{address}</div>
       </div>
 
