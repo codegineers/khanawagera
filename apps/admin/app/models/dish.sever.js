@@ -1,12 +1,12 @@
 import { prisma } from 'db'
 
-export function getDishes(menuId) {
+export function getDishes(categoryId) {
 	return prisma.dish.findMany({
 		select: {
 			id: true,
 			name: true,
 		},
-		where: { menuId: menuId },
+		where: { categoryId: categoryId },
 	})
 }
 
@@ -20,13 +20,14 @@ export function getDishById(id) {
 	})
 }
 
-export function createDish({ name, menuId }) {
+export function createDish({ name, categoryId }) {
+	console.log({ name, categoryId })
 	return prisma.dish.create({
 		data: {
 			name,
-			menu: {
+			category: {
 				connect: {
-					id: menuId,
+					id: categoryId,
 				},
 			},
 		},
