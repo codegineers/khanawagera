@@ -3,8 +3,6 @@ import { json } from '@remix-run/node'
 
 import { getRestaurants } from '~/models/restaurant.server'
 
-import Button from '~/components/Button'
-
 export async function loader() {
 	return json(await getRestaurants())
 }
