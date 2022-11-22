@@ -39,7 +39,6 @@ export default function RestaurantPage() {
             className="my-2 text-slate-700 border-b-2 border-slate-100 pb-2"
             key={id}
           >
-            #<span className="mr-4">{index + 1}</span>
             {name}
           </div>
         ))}
