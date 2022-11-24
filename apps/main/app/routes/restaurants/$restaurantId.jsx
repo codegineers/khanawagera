@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { getRestaurantById } from "~/models/restaurant.server";
+import { getRestaurantById } from "models/restaurant";
 
 export async function loader({ params }) {
   const { restaurantId } = params;
