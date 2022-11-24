@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useSearchParams,
 } from "@remix-run/react";
 
 import styles from "./styles/tailwind.css";
@@ -21,6 +22,9 @@ export const meta = () => ({
 });
 
 export default function App() {
+  const [searchParams] = useSearchParams();
+  const params = searchParams.get("q") || searchParams.get("cuisine");
+
   return (
     <html lang="en">
       <head>
@@ -39,6 +43,7 @@ export default function App() {
               name="q"
               className="w-full p-2 bg-white border-2 rounded outline-0 hover:border-emerald-400 focus:border-emerald-400"
               placeholder="Kya khaney ka mood hai?"
+              value={params}
             />
           </Form>
         </div>
