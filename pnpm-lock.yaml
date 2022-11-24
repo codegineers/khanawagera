@@ -60,6 +60,7 @@ importers:
       eslint: ^8.27.0
       eslint-config-prettier: 8.5.0
       isbot: ^3.6.5
+      models: workspace:1.0.0
       postcss: 8.4.18
       prettier: 2.7.1
       prettier-plugin-tailwindcss: 0.1.13
@@ -72,6 +73,7 @@ importers:
       '@remix-run/serve': 1.7.5_biqbaboplfbrettd7655fr4n2y
       db: link:../../packages/db
       isbot: 3.6.5
+      models: link:../../packages/models
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -105,6 +107,12 @@ importers:
       '@babel/core': 7.20.2
       '@babel/preset-env': 7.20.2_@babel+core@7.20.2
       dotenv: 16.0.3
+
+  packages/models:
+    specifiers:
+      db: workspace:1.0.0
+    dependencies:
+      db: link:../db
 
 packages:
 
