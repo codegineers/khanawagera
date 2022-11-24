@@ -46,6 +46,7 @@ function getRestaurantsByCuisine({ cuisine }) {
     JOIN public."Cuisine" as c
     ON rc."cuisineId" = c.id
     WHERE c.name = ${cuisine}
+    ORDER BY r.name
   `
 }
 
@@ -71,6 +72,7 @@ function filterRestaurants({ searchQuery }) {
     or r.name ilike ${filterBy}
     or cu.name ilike ${filterBy}
     group by r.id, r.name
+    ORDER BY r.name
   `
 }
 
