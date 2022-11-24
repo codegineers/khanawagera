@@ -26,22 +26,24 @@ export async function loader({ request, params }) {
 
 export default function SearchPage() {
   const { restaurants } = useLoaderData();
-  console.log({ restaurants });
+
   return (
-    <div className="grid p-3">
+    <div className="p-3">
       {restaurants.length > 0 && (
-        <div className="p-3">{restaurants.length} Restaurants found</div>
+        <div className="my-4">{restaurants.length} Restaurants found</div>
       )}
-      {restaurants.map(({ id, name }) => (
-        <Link
-          key={id}
-          to={`/restaurants/${id}`}
-          target="_blank"
-          className="bg-white my-1 py-2 px-4 cursor-pointer border-b-2 text-slate-700 hover:shadow-md"
-        >
-          <div>{name}</div>
-        </Link>
-      ))}
+      <div className="grid grid-cols-2 sm:grid-cols-12 gap-8">
+        {restaurants.map(({ id, name }) => (
+          <Link
+            key={id}
+            to={`/restaurants/${id}`}
+            target="_blank"
+            className="rounded col-span-full sm:col-span-4 bg-white my-1 py-8 text-center font-medium cursor-pointer border-b-2 text-slate-700 hover:shadow-md"
+          >
+            {name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
