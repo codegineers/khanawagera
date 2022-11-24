@@ -27,8 +27,8 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-100">
-        <div className="flex flex-1 bg-emerald-400 p-3 text-white">
-          Khanawagera
+        <div className="flex flex-1 font-bold bg-emerald-400 p-3 text-white">
+          KW
         </div>
         <Outlet />
         <ScrollRestoration />
