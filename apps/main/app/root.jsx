@@ -1,5 +1,6 @@
 import {
   Links,
+  Link,
   Form,
   LiveReload,
   Meta,
@@ -32,9 +33,12 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-100">
-        <div className="flex flex-1 font-bold bg-emerald-400 p-3 text-white">
+        <Link
+          to="/"
+          className="flex flex-1 font-bold bg-emerald-400 p-3 text-white"
+        >
           KW
-        </div>
+        </Link>
         <div className="grid grid-cols-12 p-3 bg-emerald-400">
           <Form className="col-span-12" action="/search">
             <input
