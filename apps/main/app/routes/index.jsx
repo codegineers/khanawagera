@@ -13,20 +13,18 @@ export default function Index() {
   const { cuisines } = useLoaderData();
 
   return (
-    <div>
-      <div className="p-3">
-        <h2 className="text-xl capitalize font-semibold">cuisines</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-12 gap-2 my-4">
-          {cuisines.map(({ id, name }) => (
-            <Link
-              to={`/search?cuisine=${name.toLowerCase()}`}
-              key={id}
-              className="capitalize block bg-white col-span-1 sm:col-span-3 md:col-span-2 py-8 rounded my-auto text-center cursor-pointer hover:shadow-md"
-            >
-              {name}
-            </Link>
-          ))}
-        </div>
+    <div className="container my-8 mx-auto px-8 py-4">
+      <h2 className="text-xl capitalize font-semibold">cuisines</h2>
+      <div className="grid grid-cols-6 md:grid-cols-12 gap-4 my-4">
+        {cuisines.map(({ id, name }) => (
+          <Link
+            to={`/search?cuisine=${name.toLowerCase()}`}
+            key={id}
+            className="capitalize block bg-white col-span-3 md:col-span-3 py-8 rounded my-auto text-center cursor-pointer hover:shadow-md"
+          >
+            {name}
+          </Link>
+        ))}
       </div>
     </div>
   );
