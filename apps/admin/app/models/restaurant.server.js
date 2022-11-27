@@ -6,7 +6,7 @@ export function getRestaurants() {
 			id: true,
 			name: true,
 		},
-		orderBy: { updatedAt: 'desc' },
+		orderBy: { name: 'desc' },
 	})
 }
 
