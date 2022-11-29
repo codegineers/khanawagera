@@ -6,13 +6,16 @@ export default function NavbarComponent() {
 
   return (
     <div className="px-4 py-2 bg-emerald-400 shadow">
-      <Link
-        to="/"
-        className="py-1 block text-center sm:text-left font-bold bg-emerald-400 text-white"
-      >
-        KW
-      </Link>
-      <div className="py-2 max-w-md mx-auto bg-emerald-400">
+      <div className="mt-4 text-center sm:text-left">
+        <Link
+          to="/"
+          className="py-3 px-2 font-bold bg-white text-emerald-400 rounded-full"
+        >
+          KW
+        </Link>
+      </div>
+
+      <div className="mt-5 mb-2 max-w-md mx-auto bg-emerald-400">
         <Form action="/search">
           <input
             id="search"
