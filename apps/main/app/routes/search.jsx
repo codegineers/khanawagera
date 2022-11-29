@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { filterRestaurants, getRestaurantsByCuisine } from "models/restaurant";
 
-export async function loader({ request, params }) {
+export async function loader({ request }) {
   const url = new URL(request.url);
   const searchByCuisine = url.searchParams.get("cuisine");
   const searchQuery = url.searchParams.get("q");
