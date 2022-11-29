@@ -18,7 +18,7 @@ export default function NavbarComponent() {
             id="search"
             type="text"
             name="q"
-            className="w-full p-2 shadow-md rounded outline-0"
+            className="w-full p-2 shadow-md rounded focus:outline-none"
             placeholder="Kya khaney ka mood hai?"
             value={params}
             required
