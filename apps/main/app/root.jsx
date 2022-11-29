@@ -48,6 +48,7 @@ export default function App() {
               className="w-full p-2 bg-white border-2 rounded outline-0 hover:border-emerald-400 focus:border-emerald-400"
               placeholder="Kya khaney ka mood hai?"
               value={params}
+              required
             />
           </Form>
         </div>
