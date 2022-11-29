@@ -31,7 +31,7 @@ export default function RestaurantPage() {
       </div>
 
       <div className="bg-white rounded mt-8">
-        <h3 className="text-sm sm:text-xl p-4 font-medium border-b-2 border-emerald-400 pb-2 uppercase">
+        <h3 className="text-base sm:text-xl p-4 font-medium border-b-2 border-emerald-400 pb-2 uppercase">
           What to eat
         </h3>
         <div>
@@ -39,7 +39,7 @@ export default function RestaurantPage() {
             <>
               <div
                 key={id}
-                className="border-b-2 font-semibold border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
+                className="text-sm border-b-2 font-semibold border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
               >
                 <span className="overflow-hidden whitespace-nowrap">
                   {name}
@@ -48,7 +48,7 @@ export default function RestaurantPage() {
               {dishes.map(({ id, name }) => (
                 <div
                   key={id}
-                  className="border-b-2 border-slate-100 py-3 px-6 hover:bg-emerald-300 hover:text-white"
+                  className="text-sm border-b-2 border-slate-100 py-3 px-6 hover:bg-emerald-300 hover:text-white"
                 >
                   <span className="overflow-hidden whitespace-nowrap">
                     {name}
