@@ -30,8 +30,8 @@ export default function SearchPage() {
   return (
     <div className="container my-8 mx-auto px-8 py-4">
       {restaurants.length > 0 && (
-        <div className="my-4 font-light">
-          {restaurants.length} Restaurants found
+        <div className="mb-4 font-light">
+          {restaurants.length} restaurants found
         </div>
       )}
       <div className="grid grid-cols-2 sm:grid-cols-12 gap-4">
