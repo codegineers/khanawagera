@@ -39,7 +39,6 @@ export default function SearchPage() {
           <Link
             key={id}
             to={`/restaurants/${id}`}
-            target="_blank"
             className="rounded col-span-full sm:col-span-6 bg-white my-1 py-8 text-center text-lg font-medium cursor-pointer border-b-2 text-slate-700 sm:hover:shadow-md"
           >
             {name}
