@@ -13,10 +13,10 @@ export default function RestaurantPage() {
   const { name, address, menus, restaurantCuisines } = restaurant;
   const { categories } = menus[0];
   return (
-    <div>
-      <div className="grid bg-white py-4 px-4 rounded max-w-md mx-auto justify-items-center my-8">
-        <h1 className="my-2 text-2xl font-bold uppercase">{name}</h1>
-        <div className="flex space-x-1">
+    <div className="container my-8 max-w-lg mx-auto px-8 py-4">
+      <div className="bg-white py-4 px-4 rounded text-center">
+        <h1 className="my-2 text-lg sm:text-2xl font-bold uppercase">{name}</h1>
+        <div className="space-x-1">
           {restaurantCuisines.map(({ cuisine }, index) => (
             <span
               key={cuisine.id}
@@ -30,8 +30,8 @@ export default function RestaurantPage() {
         <div className="text-sm my-2 font-light text-center">{address}</div>
       </div>
 
-      <div className="bg-white rounded max-w-md mx-auto my-8">
-        <h3 className="text-xl p-4 font-medium border-b-2 border-emerald-400 pb-2 uppercase">
+      <div className="bg-white rounded mt-8">
+        <h3 className="text-sm sm:text-xl p-4 font-medium border-b-2 border-emerald-400 pb-2 uppercase">
           What to eat
         </h3>
         <div>
@@ -39,7 +39,7 @@ export default function RestaurantPage() {
             <>
               <div
                 key={id}
-                className="border-b-2 font-bold border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
+                className="border-b-2 font-semibold border-slate-100 py-3 px-4 hover:bg-emerald-300 hover:text-white"
               >
                 <span className="overflow-hidden whitespace-nowrap">
                   {name}
