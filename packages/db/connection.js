@@ -17,29 +17,15 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function getClient() {
-	const { KHANAWAGERA_V1_POSTGRESURL } = process.env
+	const DATABASE_URL =
+		process.env.NODE_ENV === 'development'
+			? process.env.KHANAWAGERA_V1_POSTGRESURL
+			: process.env.KHANAWAGERA_PRODUCTION_V1_POSTGRESURL
+	// const { KHANAWAGERA_V1_POSTGRESURL } = process.env
 
-	invariant(
-		typeof KHANAWAGERA_V1_POSTGRESURL === 'string',
-		'KHANAWAGERA_V1_POSTGRESURL env var not set'
-	)
+	invariant(typeof DATABASE_URL === 'string', 'DATABASE_URL env var not set')
 
-	const databaseUrl = new URL(KHANAWAGERA_V1_POSTGRESURL)
-
-	// const isLocalHost = databaseUrl.hostname === 'localhost'
-
-	// const PRIMARY_REGION = isLocalHost ? null : process.env.PRIMARY_REGION
-	// const DB_REGION = isLocalHost ? null : process.env.DB_REGION
-
-	// const isReadReplicaRegion = !PRIMARY_REGION || PRIMARY_REGION === DB_REGION
-
-	// if (!isLocalHost) {
-	// 	databaseUrl.host = `${DB_REGION}.${databaseUrl.host}`
-	// 	if (!isReadReplicaRegion) {
-	// 		// 5433 is the read-replica port
-	// 		databaseUrl.port = '5433'
-	// 	}
-	// }
+	const databaseUrl = new URL(DATABASE_URL)
 
 	console.log(
 		`🔌 setting up prisma client to ${databaseUrl.host} on port ${databaseUrl.port}`
