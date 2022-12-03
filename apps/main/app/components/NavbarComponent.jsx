@@ -2,7 +2,7 @@ import { Link, Form, useSearchParams } from "@remix-run/react";
 
 export default function NavbarComponent() {
   const [searchParams] = useSearchParams();
-  const params = searchParams.get("q") || searchParams.get("cuisine");
+  const params = searchParams.get("q") || searchParams.get("cuisine") || "";
 
   return (
     <div className="px-4 py-2 bg-emerald-400 shadow">
@@ -23,7 +23,7 @@ export default function NavbarComponent() {
             name="q"
             className="w-full p-2 shadow-md rounded focus:outline-none"
             placeholder="Kya khaney ka mood hai?"
-            value={params}
+            defaultValue={params}
             required
           />
         </Form>
