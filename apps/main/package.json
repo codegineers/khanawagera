@@ -11,7 +11,8 @@
     "dev:start": "remix dev",
     "generate:css": "tailwindcss -o ./app/styles/tailwind.css",
     "start": "remix-serve build",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "@remix-run/node": "1.7.5",
