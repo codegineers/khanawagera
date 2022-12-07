@@ -1,6 +1,9 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { filterRestaurants, getRestaurantsByCuisine } from "models/restaurant";
+import {
+  filterRestaurants,
+  getRestaurantsByCuisine,
+} from "db/models/restaurant";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
