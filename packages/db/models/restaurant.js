@@ -1,4 +1,4 @@
-const { prisma } = require('db')
+const { prisma } = require('../connection')
 
 function getRestaurantById(id) {
 	return prisma.restaurant.findFirst({

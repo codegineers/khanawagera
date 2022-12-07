@@ -1,4 +1,4 @@
-const { prisma } = require('db')
+const { prisma } = require('../connection')
 
 function getCuisines() {
 	return prisma.cuisine.findMany({
