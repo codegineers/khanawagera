@@ -1,16 +1,22 @@
 import { json } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import {
   filterRestaurants,
   getRestaurantsByCuisine,
 } from "db/models/restaurant";
 
-export async function loader({ request }) {
+type restaurantType = {
+  id: string;
+  name: string;
+};
+
+export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
   const searchByCuisine = url.searchParams.get("cuisine");
   const searchQuery = url.searchParams.get("q");
 
-  var restaurants = [];
+  var restaurants: restaurantType[] = [];
 
   if (searchByCuisine) {
     restaurants = await getRestaurantsByCuisine({
@@ -23,12 +29,11 @@ export async function loader({ request }) {
       searchQuery,
     });
   }
-
   return json({ restaurants });
 }
 
 export default function SearchPage() {
-  const { restaurants } = useLoaderData();
+  const { restaurants } = useLoaderData<typeof loader>();
 
   return (
     <div className="container my-8 mx-auto px-8 py-4">
