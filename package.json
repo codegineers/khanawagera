@@ -6,7 +6,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:dev": "pnpm --filter main dev",
 		"admin:dev": "pnpm --filter admin dev",
-		"prisma:generate": "cd ./packages/db && npx prisma generate"
+		"prisma:generate": "cd ./packages/db && npx prisma generate",
+		"db:start": "cd ./packages/db && docker-compose up -d"
 	},
 	"keywords": [],
 	"author": "",
