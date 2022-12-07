@@ -1,13 +1,18 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 
-import { getCuisines } from "models/cuisine";
+import { getCuisines } from "db/models/cuisine";
 
 export async function loader() {
   const cuisines = await getCuisines();
 
   return json({ cuisines });
 }
+
+type cuisineType = {
+  id: string;
+  name: string;
+};
 
 export default function Index() {
   const { cuisines } = useLoaderData();
@@ -16,7 +21,7 @@ export default function Index() {
     <div className="container my-8 mx-auto px-8 py-4">
       <h2 className="text-xl capitalize font-semibold">cuisines</h2>
       <div className="grid grid-cols-6 md:grid-cols-12 gap-4 my-4">
-        {cuisines.map(({ id, name }) => (
+        {cuisines.map(({ id, name }: cuisineType) => (
           <Link
             to={`/search?cuisine=${name.toLowerCase()}`}
             key={id}
