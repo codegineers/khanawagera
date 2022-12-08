@@ -1,11 +1,18 @@
 {
+  "include": [
+    "**/*.ts",
+  ],
+  "exclude": [
+    "**.*.js"
+  ],
   "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist",
     "strict": true,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true
-  }
+    "module": "CommonJS",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+  },
 }

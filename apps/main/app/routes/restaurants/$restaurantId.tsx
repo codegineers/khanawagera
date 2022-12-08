@@ -1,17 +1,28 @@
 import { useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
+import invariant from "tiny-invariant";
+
 import { getRestaurantById } from "db/models/restaurant";
 
-export async function loader({ params }) {
+export async function loader({ params }: LoaderArgs) {
   const { restaurantId } = params;
+  invariant(restaurantId, "restaurantId not found");
+
   const restaurant = await getRestaurantById(restaurantId);
   return json({ restaurant });
 }
 
 export default function RestaurantPage() {
-  const { restaurant } = useLoaderData();
-  const { name, address, menus, restaurantCuisines } = restaurant;
+  const { restaurant } = useLoaderData<typeof loader>();
+  const {
+    name,
+    address,
+    menus = [],
+    restaurantCuisines = [],
+  } = restaurant || {};
   const { categories } = menus[0];
+
   return (
     <div className="container my-8 max-w-lg mx-auto px-8 py-4">
       <div className="bg-white py-4 px-4 rounded text-center">
