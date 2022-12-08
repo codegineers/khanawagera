@@ -1,7 +1,6 @@
-import { prisma } from '../connection'
-import { Cuisine } from '../prisma-client'
+import prisma from '../connection'
 
-function getCuisines(): Cuisine[] {
+export function getCuisines() {
 	return prisma.cuisine.findMany({
 		select: {
 			id: true,
@@ -10,5 +9,3 @@ function getCuisines(): Cuisine[] {
 		orderBy: { id: 'asc' },
 	})
 }
-
-export { getCuisines }
