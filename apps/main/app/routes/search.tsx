@@ -4,19 +4,16 @@ import { Link, useLoaderData } from "@remix-run/react";
 import {
   filterRestaurants,
   getRestaurantsByCuisine,
-} from "db/models/restaurant";
+} from "db/dist/models/restaurant";
 
-type restaurantType = {
-  id: string;
-  name: string;
-};
+import type { Restaurant } from "db/dist/models/restaurant";
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
   const searchByCuisine = url.searchParams.get("cuisine");
   const searchQuery = url.searchParams.get("q");
 
-  var restaurants: restaurantType[] = [];
+  let restaurants: Restaurant[] = [];
 
   if (searchByCuisine) {
     restaurants = await getRestaurantsByCuisine({
@@ -29,6 +26,7 @@ export async function loader({ request }: LoaderArgs) {
       searchQuery,
     });
   }
+
   return json({ restaurants });
 }
 

@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 
-import { getCuisines } from "db/models/cuisine";
+import { getCuisines } from "db/dist/models/cuisine";
 
 export async function loader() {
   const cuisines = await getCuisines();

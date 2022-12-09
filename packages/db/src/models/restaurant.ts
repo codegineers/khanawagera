@@ -1,6 +1,8 @@
 import prisma from '../connection'
 import { Restaurant } from '../../prisma-client'
 
+export type { Restaurant } from '../../prisma-client'
+
 export function getRestaurantById(id: Restaurant['id']) {
 	return prisma.restaurant.findUnique({
 		where: { id },
@@ -38,7 +40,11 @@ export function getRestaurantById(id: Restaurant['id']) {
 	})
 }
 
-export function getRestaurantsByCuisine({ cuisine }: { cuisine: string }) {
+export function getRestaurantsByCuisine({
+	cuisine,
+}: {
+	cuisine: string
+}): Promise<Restaurant[]> {
 	return prisma.$queryRaw`
     SELECT r.id, r.name
     FROM public."Restaurant" as r
@@ -51,7 +57,11 @@ export function getRestaurantsByCuisine({ cuisine }: { cuisine: string }) {
   `
 }
 
-export function filterRestaurants({ searchQuery }: { searchQuery: string }) {
+export function filterRestaurants({
+	searchQuery,
+}: {
+	searchQuery: string
+}): Promise<Restaurant[]> {
 	const filterBy = `%${searchQuery}%`
 
 	return prisma.$queryRaw`

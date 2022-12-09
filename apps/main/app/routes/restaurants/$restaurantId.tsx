@@ -3,7 +3,7 @@ import { json } from "@remix-run/node";
 import type { LoaderArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
-import { getRestaurantById } from "db/models/restaurant";
+import { getRestaurantById } from "db/dist/models/restaurant";
 
 export async function loader({ params }: LoaderArgs) {
   const { restaurantId } = params;
