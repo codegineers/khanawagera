@@ -7,7 +7,8 @@
 		"main:dev": "pnpm --filter main dev",
 		"admin:dev": "pnpm --filter admin dev",
 		"prisma:generate": "cd ./packages/db && npx prisma generate",
-		"db:start": "cd ./packages/db && docker-compose up -d"
+		"db:start": "cd ./packages/db && docker-compose up -d",
+		"db:dev": "cd ./packages/db && tsc --build"
 	},
 	"keywords": [],
 	"author": "",
