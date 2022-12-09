@@ -1,7 +1,8 @@
-const { prisma } = require('../connection')
+import prisma from '../connection'
+import { Restaurant } from '../../prisma-client'
 
-function getRestaurantById(id) {
-	return prisma.restaurant.findFirst({
+export function getRestaurantById(id: Restaurant['id']) {
+	return prisma.restaurant.findUnique({
 		where: { id },
 		select: {
 			id: true,
@@ -37,7 +38,7 @@ function getRestaurantById(id) {
 	})
 }
 
-function getRestaurantsByCuisine({ cuisine }) {
+export function getRestaurantsByCuisine({ cuisine }: { cuisine: string }) {
 	return prisma.$queryRaw`
     SELECT r.id, r.name
     FROM public."Restaurant" as r
@@ -50,7 +51,7 @@ function getRestaurantsByCuisine({ cuisine }) {
   `
 }
 
-function filterRestaurants({ searchQuery }) {
+export function filterRestaurants({ searchQuery }: { searchQuery: string }) {
 	const filterBy = `%${searchQuery}%`
 
 	return prisma.$queryRaw`
@@ -74,10 +75,4 @@ function filterRestaurants({ searchQuery }) {
     group by r.id, r.name
     ORDER BY r.name
   `
-}
-
-module.exports = {
-	getRestaurantById,
-	getRestaurantsByCuisine,
-	filterRestaurants,
 }
