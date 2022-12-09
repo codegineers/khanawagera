@@ -1,18 +1,12 @@
 {
-  "include": [
-    "**/*.ts",
-  ],
-  "exclude": [
-    "**.*.js"
-  ],
   "compilerOptions": {
+    "outDir": "dist",
+    "composite": true,
+    "rootDir": "./src",
     "strict": true,
-    "module": "CommonJS",
+    "moduleResolution": "node",
     "isolatedModules": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
   },
 }
