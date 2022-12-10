@@ -5,7 +5,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:dev": "pnpm --filter main dev",
+		"main:build": "pnpm --filter main build",
 		"admin:dev": "pnpm --filter admin dev",
+		"admin:build": "pnpm --filter admin build",
 		"prisma:generate": "cd ./packages/db && npx prisma generate",
 		"db:start": "cd ./packages/db && docker-compose up -d",
 		"db:dev": "cd ./packages/db && tsc --build"
