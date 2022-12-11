@@ -4,8 +4,8 @@
 	"description": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"main:dev": "pnpm --filter client dev",
-		"main:build": "pnpm --filter client build",
+		"client:dev": "pnpm --filter client dev",
+		"client:build": "pnpm --filter client build",
 		"admin:dev": "pnpm --filter admin dev",
 		"admin:build": "pnpm --filter admin build",
 		"prisma:generate": "cd ./packages/db && npx prisma generate",
