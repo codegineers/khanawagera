@@ -10,14 +10,14 @@ import type { Restaurant } from "db/dist/models/restaurant";
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
-  const searchByCuisine = url.searchParams.get("cuisine");
+  const cuisine = url.searchParams.get("cuisine");
   const searchQuery = url.searchParams.get("q");
 
   let restaurants: Restaurant[] = [];
 
-  if (searchByCuisine) {
+  if (cuisine) {
     restaurants = await getRestaurantsByCuisine({
-      cuisine: searchByCuisine,
+      cuisine,
     });
   }
 
