@@ -1,3 +1,16 @@
+type ButtonType = {
+	type: 'button' | 'submit' | 'reset'
+	name?: string
+	value?: string
+	onClick?: () => void
+	children: React.ReactElement
+	primary: boolean
+	small?: boolean
+	outlined?: boolean
+	full?: boolean
+	rounded?: boolean
+}
+
 export default function Button({
 	type,
 	name,
@@ -9,7 +22,7 @@ export default function Button({
 	outlined,
 	full,
 	rounded,
-}) {
+}: ButtonType) {
 	return (
 		<button
 			type={type}

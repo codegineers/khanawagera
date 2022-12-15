@@ -1,24 +1,50 @@
+import type { ActionArgs } from '@remix-run/node'
 import { Form, useOutletContext } from '@remix-run/react'
+import { json } from '@remix-run/node'
+import invariant from 'tiny-invariant'
 
 import Button from '~/components/Button'
 
 import { updateRestaurant } from '~/models/restaurant.server'
+import type { Restaurant } from 'db/prisma-client'
 
-export async function action({ request, params }) {
+export async function action({ request, params }: ActionArgs) {
 	const { restaurantId } = params
+	invariant(restaurantId, 'restaurantId not found')
+
 	const formData = await request.formData()
 	const name = formData.get('name')
 	const address = formData.get('address')
 
-	return await updateRestaurant({
+	if (typeof name !== 'string' || name.length === 0) {
+		return json(
+			{
+				errors: { name: 'Name is required', address: null },
+			},
+			{ status: 400 }
+		)
+	}
+
+	if (typeof address !== 'string' || address.length === 0) {
+		return json(
+			{
+				errors: { address: 'Address is required', name: null },
+			},
+			{ status: 400 }
+		)
+	}
+
+	const restaurant = await updateRestaurant({
 		id: restaurantId,
 		name,
 		address,
 	})
+
+	return json({ restaurant })
 }
 
 export default function RestaurantDetailsPage() {
-	const { restaurant } = useOutletContext()
+	const { restaurant } = useOutletContext<{ restaurant: Restaurant }>()
 
 	return (
 		<div className="p-4">
@@ -43,16 +69,15 @@ export default function RestaurantDetailsPage() {
 					<textarea
 						id="restaurant-address"
 						className="mt-2 bg-white px-2 py-2 w-full border-2 rounded outline-0 hover:border-emerald-400 focus:border-emerald-400"
-						type="text"
 						name="address"
 						required
-						rows="4"
-						defaultValue={restaurant.address}
+						rows={4}
+						defaultValue={restaurant.address || ''}
 					/>
 				</div>
 				<div className="mt-8">
 					<Button type="submit" primary full rounded>
-						Save
+						<span>Save</span>
 					</Button>
 				</div>
 			</Form>
