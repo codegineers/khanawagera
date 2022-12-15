@@ -8,7 +8,7 @@ export async function loader() {
 }
 
 export default function RestaurantPage() {
-	const restaurants = useLoaderData()
+	const restaurants = useLoaderData<typeof loader>()
 
 	return (
 		<div>
