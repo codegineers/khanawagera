@@ -11,7 +11,10 @@ export function getRestaurants() {
 	})
 }
 
-export function createRestaurant({ name, address }: Restaurant) {
+export function createRestaurant({
+	name,
+	address,
+}: Pick<Restaurant, 'name' | 'address'>) {
 	return prisma.restaurant.create({
 		data: {
 			name,
@@ -20,7 +23,11 @@ export function createRestaurant({ name, address }: Restaurant) {
 	})
 }
 
-export function updateRestaurant({ id, name, address }: Restaurant) {
+export function updateRestaurant({
+	id,
+	name,
+	address,
+}: Pick<Restaurant, 'id' | 'name' | 'address'>) {
 	return prisma.restaurant.update({
 		data: {
 			name,
