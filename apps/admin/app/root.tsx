@@ -1,3 +1,5 @@
+import type { MetaFunction } from '@remix-run/node'
+
 import {
 	Links,
 	LiveReload,
@@ -13,9 +15,9 @@ export function links() {
 	return [{ rel: 'stylesheet', href: styles }]
 }
 
-export const meta = () => ({
+export const meta: MetaFunction = () => ({
 	charset: 'utf-8',
-	title: 'Khanawagera admin',
+	title: 'Khanawagera-admin',
 	viewport: 'width=device-width,initial-scale=1',
 })
 
