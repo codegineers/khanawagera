@@ -33,7 +33,7 @@ export function updateRestaurant({ id, name, address }: Restaurant) {
 }
 
 export function getRestaurantById(id: Restaurant['id']) {
-	return prisma.restaurant.findFirst({
+	return prisma.restaurant.findUnique({
 		select: {
 			id: true,
 			name: true,
