@@ -6,7 +6,7 @@ import invariant from 'tiny-invariant'
 import Button from '~/components/Button'
 
 import { updateRestaurant } from '~/models/restaurant.server'
-import type { Restaurant } from 'db/prisma-client'
+import type { Restaurant } from '~/models/restaurant.server'
 
 export async function action({ request, params }: ActionArgs) {
 	const { restaurantId } = params

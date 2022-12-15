@@ -1,5 +1,6 @@
 import type { Restaurant } from 'db/prisma-client'
 import prisma from 'db/dist/connection'
+export type { Restaurant } from 'db/prisma-client'
 
 export function getRestaurants() {
 	return prisma.restaurant.findMany({
