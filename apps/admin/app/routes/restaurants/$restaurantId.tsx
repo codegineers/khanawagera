@@ -1,20 +1,26 @@
 import { Link, NavLink, useLoaderData, Outlet } from '@remix-run/react'
 import { json } from '@remix-run/node'
+import type { LoaderArgs } from '@remix-run/node'
+import invariant from 'tiny-invariant'
 
 import { getRestaurantById } from '~/models/restaurant.server'
 
-export async function loader({ params }) {
-	const restaurant = await getRestaurantById(params.restaurantId)
+export async function loader({ params }: LoaderArgs) {
+	const { restaurantId } = params
+
+	invariant(restaurantId, 'restaurantId not found')
+
+	const restaurant = await getRestaurantById(restaurantId)
 
 	if (!restaurant) {
-		return json('Restaurant not found', { status: 404 })
+		throw new Response('Restaurant not found', { status: 404 })
 	}
 
 	return json({ restaurant })
 }
 
 export default function RestaurantPage() {
-	const { restaurant } = useLoaderData()
+	const { restaurant } = useLoaderData<typeof loader>()
 
 	return (
 		<div>
