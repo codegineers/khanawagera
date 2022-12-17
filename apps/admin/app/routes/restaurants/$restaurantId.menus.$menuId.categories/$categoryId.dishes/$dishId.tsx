@@ -1,27 +1,47 @@
 import { json, redirect } from '@remix-run/node'
+import type { ActionArgs, LoaderArgs } from '@remix-run/node'
 import { Form, Link, useParams, useLoaderData } from '@remix-run/react'
-import { deleteDish, getDishById, updateDish } from '~/models/dish.sever'
+import { deleteById, getDishById, updateDish } from '~/models/dish.server'
 
 import Button from '~/components/Button'
+import invariant from 'tiny-invariant'
 
-export async function loader({ params }) {
-	const dish = await getDishById(params.dishId)
+export async function loader({ params }: LoaderArgs) {
+	const { dishId } = params
+	invariant(dishId, 'dishId not found')
+
+	const dish = await getDishById(dishId)
+
+	if (!dish) {
+		throw new Response('Not found', { status: 404 })
+	}
+
 	return json({ dish })
 }
 
-export async function action({ request, params }) {
+export async function action({ request, params }: ActionArgs) {
 	const { restaurantId, menuId, dishId } = params
+	invariant(restaurantId, 'restaurantId not found')
+	invariant(menuId, 'menuId not found')
+	invariant(dishId, 'dishId not found')
+
 	const formData = await request.formData()
 
 	const formType = formData.get('type')
 	switch (formType) {
 		case 'delete':
-			await deleteDish({ id: dishId })
+			await deleteById(dishId)
 			break
 
 		case 'edit':
-			const dishName = formData.get('dish')
-			await updateDish({ id: dishId, name: dishName })
+			const name = formData.get('dish')
+			if (typeof name !== 'string' || name.length === 0) {
+				return json(
+					{ errors: { name: 'dish name is required' } },
+					{ status: 400 }
+				)
+			}
+			await updateDish({ id: dishId, name })
 			break
 	}
 
@@ -29,7 +49,7 @@ export async function action({ request, params }) {
 }
 
 export default function DishPage() {
-	const { dish } = useLoaderData()
+	const { dish } = useLoaderData<typeof loader>()
 	const { restaurantId, menuId } = useParams()
 	const { name } = dish
 
@@ -72,7 +92,7 @@ export default function DishPage() {
 					<div className="grid border-t-2 text-slate-700 mt-4 mx-4 py-4">
 						<div>
 							<Button name="type" value="edit" type="submit" primary full>
-								Save
+								<span>Save</span>
 							</Button>
 						</div>
 					</div>
