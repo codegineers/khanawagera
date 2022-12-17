@@ -21,7 +21,7 @@ export async function action({ request, params }: ActionArgs) {
 	}
 
 	await createCategory({ name, menuId })
-	return redirect(`/restaurants/${restaurantId}/menu/${menuId}`)
+	return redirect(`/restaurants/${restaurantId}/menu`)
 }
 
 export default function NewCategoryPage() {
@@ -31,7 +31,7 @@ export default function NewCategoryPage() {
 		<>
 			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white shadow rounded">
 				<Link
-					to={`/restaurants/${restaurantId}/menu/${menuId}`}
+					to={`/restaurants/${restaurantId}/menu`}
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
 				>
 					New category

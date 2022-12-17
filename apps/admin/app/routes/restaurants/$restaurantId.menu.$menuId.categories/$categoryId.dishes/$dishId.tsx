@@ -45,19 +45,19 @@ export async function action({ request, params }: ActionArgs) {
 			break
 	}
 
-	return redirect(`/restaurants/${restaurantId}/menu/${menuId}`)
+	return redirect(`/restaurants/${restaurantId}/menu`)
 }
 
 export default function DishPage() {
 	const { dish } = useLoaderData<typeof loader>()
-	const { restaurantId, menuId } = useParams()
+	const { restaurantId } = useParams()
 	const { name } = dish
 
 	return (
 		<>
 			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white shadow rounded">
 				<Link
-					to={`/restaurants/${restaurantId}/menu/${menuId}`}
+					to={`/restaurants/${restaurantId}/menu`}
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
 				>
 					{name}
