@@ -18,7 +18,7 @@ export function createCategory({
 }
 
 export function getCategoryById(id: Category['id']) {
-	return prisma.category.findFirst({
+	return prisma.category.findUnique({
 		select: {
 			id: true,
 			name: true,

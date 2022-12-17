@@ -1,4 +1,5 @@
 import { json, redirect } from '@remix-run/node'
+import type { ActionArgs, LoaderArgs } from '@remix-run/node'
 import { Form, Link, useParams, useLoaderData } from '@remix-run/react'
 import {
 	deleteCategory,
@@ -7,24 +8,46 @@ import {
 } from '~/models/category.server'
 
 import Button from '~/components/Button'
+import invariant from 'tiny-invariant'
 
-export async function loader({ params }) {
-	const category = await getCategoryById(params.categoryId)
+export async function loader({ params }: LoaderArgs) {
+	const { categoryId } = params
+	invariant(categoryId, 'categoryId not found')
+
+	const category = await getCategoryById(categoryId)
+
+	if (!category) {
+		throw new Response('Not found', { status: 404 })
+	}
+
 	return json({ category })
 }
 
-export async function action({ request, params }) {
+export async function action({ request, params }: ActionArgs) {
 	const { restaurantId, menuId, categoryId } = params
+	invariant(restaurantId, 'restaurantId not found')
+	invariant(menuId, 'menuId not found')
+	invariant(categoryId, 'categoryId not found')
+
 	const formData = await request.formData()
 
 	const formType = formData.get('type')
+
 	switch (formType) {
 		case 'delete':
-			await deleteCategory({ id: categoryId })
+			await deleteCategory(categoryId)
 			break
 
 		case 'edit':
 			const name = formData.get('category')
+
+			if (typeof name !== 'string' || name.length === 0) {
+				return json(
+					{ errors: { name: 'Category name is required' } },
+					{ status: 400 }
+				)
+			}
+
 			await updateCategory({ id: categoryId, name })
 			break
 	}
@@ -33,7 +56,7 @@ export async function action({ request, params }) {
 }
 
 export default function CategoryPage() {
-	const { category } = useLoaderData()
+	const { category } = useLoaderData<typeof loader>()
 	const { restaurantId, menuId } = useParams()
 	const { name } = category
 
@@ -76,7 +99,7 @@ export default function CategoryPage() {
 					<div className="grid border-t-2 text-slate-700 mt-4 mx-4 py-4">
 						<div>
 							<Button name="type" value="edit" type="submit" primary full>
-								Save
+								<span>Save</span>
 							</Button>
 						</div>
 					</div>
