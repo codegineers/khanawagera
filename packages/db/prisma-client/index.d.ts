@@ -1087,12 +1087,12 @@ export namespace Prisma {
 
 
   export type RestaurantCountOutputType = {
-    menus: number
+    menu: number
     restaurantCuisines: number
   }
 
   export type RestaurantCountOutputTypeSelect = {
-    menus?: boolean
+    menu?: boolean
     restaurantCuisines?: boolean
   }
 
@@ -5015,13 +5015,13 @@ export namespace Prisma {
     address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    menus?: boolean | MenuFindManyArgs
+    menu?: boolean | MenuFindManyArgs
     restaurantCuisines?: boolean | RestaurantCuisineFindManyArgs
     _count?: boolean | RestaurantCountOutputTypeArgs
   }
 
   export type RestaurantInclude = {
-    menus?: boolean | MenuFindManyArgs
+    menu?: boolean | MenuFindManyArgs
     restaurantCuisines?: boolean | RestaurantCuisineFindManyArgs
     _count?: boolean | RestaurantCountOutputTypeArgs
   }
@@ -5037,14 +5037,14 @@ export namespace Prisma {
     ?'include' extends U
     ? Restaurant  & {
     [P in TrueKeys<S['include']>]:
-        P extends 'menus' ? Array < MenuGetPayload<Exclude<S['include'], undefined | null>[P]>>  :
+        P extends 'menu' ? Array < MenuGetPayload<Exclude<S['include'], undefined | null>[P]>>  :
         P extends 'restaurantCuisines' ? Array < RestaurantCuisineGetPayload<Exclude<S['include'], undefined | null>[P]>>  :
         P extends '_count' ? RestaurantCountOutputTypeGetPayload<Exclude<S['include'], undefined | null>[P]> :  never
   } 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-        P extends 'menus' ? Array < MenuGetPayload<Exclude<S['select'], undefined | null>[P]>>  :
+        P extends 'menu' ? Array < MenuGetPayload<Exclude<S['select'], undefined | null>[P]>>  :
         P extends 'restaurantCuisines' ? Array < RestaurantCuisineGetPayload<Exclude<S['select'], undefined | null>[P]>>  :
         P extends '_count' ? RestaurantCountOutputTypeGetPayload<Exclude<S['select'], undefined | null>[P]> :  P extends keyof Restaurant ? Restaurant[P] : never
   } 
@@ -5421,7 +5421,7 @@ export namespace Prisma {
     constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
     readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
-    menus<T extends MenuFindManyArgs = {}>(args?: Subset<T, MenuFindManyArgs>): CheckSelect<T, PrismaPromise<Array<Menu>| Null>, PrismaPromise<Array<MenuGetPayload<T>>| Null>>;
+    menu<T extends MenuFindManyArgs = {}>(args?: Subset<T, MenuFindManyArgs>): CheckSelect<T, PrismaPromise<Array<Menu>| Null>, PrismaPromise<Array<MenuGetPayload<T>>| Null>>;
 
     restaurantCuisines<T extends RestaurantCuisineFindManyArgs = {}>(args?: Subset<T, RestaurantCuisineFindManyArgs>): CheckSelect<T, PrismaPromise<Array<RestaurantCuisine>| Null>, PrismaPromise<Array<RestaurantCuisineGetPayload<T>>| Null>>;
 
@@ -7006,7 +7006,7 @@ export namespace Prisma {
     address?: StringNullableFilter | string | null
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
-    menus?: MenuListRelationFilter
+    menu?: MenuListRelationFilter
     restaurantCuisines?: RestaurantCuisineListRelationFilter
   }
 
@@ -7016,7 +7016,7 @@ export namespace Prisma {
     address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    menus?: MenuOrderByRelationAggregateInput
+    menu?: MenuOrderByRelationAggregateInput
     restaurantCuisines?: RestaurantCuisineOrderByRelationAggregateInput
   }
 
@@ -7207,7 +7207,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    restaurant: RestaurantCreateNestedOneWithoutMenusInput
+    restaurant: RestaurantCreateNestedOneWithoutMenuInput
     categories?: CategoryCreateNestedManyWithoutMenuInput
   }
 
@@ -7223,7 +7223,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    restaurant?: RestaurantUpdateOneRequiredWithoutMenusNestedInput
+    restaurant?: RestaurantUpdateOneRequiredWithoutMenuNestedInput
     categories?: CategoryUpdateManyWithoutMenuNestedInput
   }
 
@@ -7320,7 +7320,7 @@ export namespace Prisma {
     address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    menus?: MenuCreateNestedManyWithoutRestaurantInput
+    menu?: MenuCreateNestedManyWithoutRestaurantInput
     restaurantCuisines?: RestaurantCuisineCreateNestedManyWithoutRestaurantInput
   }
 
@@ -7330,7 +7330,7 @@ export namespace Prisma {
     address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    menus?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
+    menu?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
     restaurantCuisines?: RestaurantCuisineUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
@@ -7340,7 +7340,7 @@ export namespace Prisma {
     address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    menus?: MenuUpdateManyWithoutRestaurantNestedInput
+    menu?: MenuUpdateManyWithoutRestaurantNestedInput
     restaurantCuisines?: RestaurantCuisineUpdateManyWithoutRestaurantNestedInput
   }
 
@@ -7350,7 +7350,7 @@ export namespace Prisma {
     address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    menus?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
+    menu?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
     restaurantCuisines?: RestaurantCuisineUncheckedUpdateManyWithoutRestaurantNestedInput
   }
 
@@ -7785,9 +7785,9 @@ export namespace Prisma {
     update?: XOR<CategoryUpdateWithoutDishesInput, CategoryUncheckedUpdateWithoutDishesInput>
   }
 
-  export type RestaurantCreateNestedOneWithoutMenusInput = {
-    create?: XOR<RestaurantCreateWithoutMenusInput, RestaurantUncheckedCreateWithoutMenusInput>
-    connectOrCreate?: RestaurantCreateOrConnectWithoutMenusInput
+  export type RestaurantCreateNestedOneWithoutMenuInput = {
+    create?: XOR<RestaurantCreateWithoutMenuInput, RestaurantUncheckedCreateWithoutMenuInput>
+    connectOrCreate?: RestaurantCreateOrConnectWithoutMenuInput
     connect?: RestaurantWhereUniqueInput
   }
 
@@ -7805,12 +7805,12 @@ export namespace Prisma {
     connect?: Enumerable<CategoryWhereUniqueInput>
   }
 
-  export type RestaurantUpdateOneRequiredWithoutMenusNestedInput = {
-    create?: XOR<RestaurantCreateWithoutMenusInput, RestaurantUncheckedCreateWithoutMenusInput>
-    connectOrCreate?: RestaurantCreateOrConnectWithoutMenusInput
-    upsert?: RestaurantUpsertWithoutMenusInput
+  export type RestaurantUpdateOneRequiredWithoutMenuNestedInput = {
+    create?: XOR<RestaurantCreateWithoutMenuInput, RestaurantUncheckedCreateWithoutMenuInput>
+    connectOrCreate?: RestaurantCreateOrConnectWithoutMenuInput
+    upsert?: RestaurantUpsertWithoutMenuInput
     connect?: RestaurantWhereUniqueInput
-    update?: XOR<RestaurantUpdateWithoutMenusInput, RestaurantUncheckedUpdateWithoutMenusInput>
+    update?: XOR<RestaurantUpdateWithoutMenuInput, RestaurantUncheckedUpdateWithoutMenuInput>
   }
 
   export type CategoryUpdateManyWithoutMenuNestedInput = {
@@ -8215,7 +8215,7 @@ export namespace Prisma {
     menuId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type RestaurantCreateWithoutMenusInput = {
+  export type RestaurantCreateWithoutMenuInput = {
     id?: string
     name: string
     address?: string | null
@@ -8224,7 +8224,7 @@ export namespace Prisma {
     restaurantCuisines?: RestaurantCuisineCreateNestedManyWithoutRestaurantInput
   }
 
-  export type RestaurantUncheckedCreateWithoutMenusInput = {
+  export type RestaurantUncheckedCreateWithoutMenuInput = {
     id?: string
     name: string
     address?: string | null
@@ -8233,9 +8233,9 @@ export namespace Prisma {
     restaurantCuisines?: RestaurantCuisineUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
-  export type RestaurantCreateOrConnectWithoutMenusInput = {
+  export type RestaurantCreateOrConnectWithoutMenuInput = {
     where: RestaurantWhereUniqueInput
-    create: XOR<RestaurantCreateWithoutMenusInput, RestaurantUncheckedCreateWithoutMenusInput>
+    create: XOR<RestaurantCreateWithoutMenuInput, RestaurantUncheckedCreateWithoutMenuInput>
   }
 
   export type CategoryCreateWithoutMenuInput = {
@@ -8264,12 +8264,12 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type RestaurantUpsertWithoutMenusInput = {
-    update: XOR<RestaurantUpdateWithoutMenusInput, RestaurantUncheckedUpdateWithoutMenusInput>
-    create: XOR<RestaurantCreateWithoutMenusInput, RestaurantUncheckedCreateWithoutMenusInput>
+  export type RestaurantUpsertWithoutMenuInput = {
+    update: XOR<RestaurantUpdateWithoutMenuInput, RestaurantUncheckedUpdateWithoutMenuInput>
+    create: XOR<RestaurantCreateWithoutMenuInput, RestaurantUncheckedCreateWithoutMenuInput>
   }
 
-  export type RestaurantUpdateWithoutMenusInput = {
+  export type RestaurantUpdateWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8278,7 +8278,7 @@ export namespace Prisma {
     restaurantCuisines?: RestaurantCuisineUpdateManyWithoutRestaurantNestedInput
   }
 
-  export type RestaurantUncheckedUpdateWithoutMenusInput = {
+  export type RestaurantUncheckedUpdateWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8318,7 +8318,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    restaurant: RestaurantCreateNestedOneWithoutMenusInput
+    restaurant: RestaurantCreateNestedOneWithoutMenuInput
   }
 
   export type MenuUncheckedCreateWithoutCategoriesInput = {
@@ -8366,7 +8366,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    restaurant?: RestaurantUpdateOneRequiredWithoutMenusNestedInput
+    restaurant?: RestaurantUpdateOneRequiredWithoutMenuNestedInput
   }
 
   export type MenuUncheckedUpdateWithoutCategoriesInput = {
@@ -8464,7 +8464,7 @@ export namespace Prisma {
 
   export type MenuUpdateManyWithWhereWithoutRestaurantInput = {
     where: MenuScalarWhereInput
-    data: XOR<MenuUpdateManyMutationInput, MenuUncheckedUpdateManyWithoutMenusInput>
+    data: XOR<MenuUpdateManyMutationInput, MenuUncheckedUpdateManyWithoutMenuInput>
   }
 
   export type MenuScalarWhereInput = {
@@ -8518,7 +8518,7 @@ export namespace Prisma {
     address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    menus?: MenuCreateNestedManyWithoutRestaurantInput
+    menu?: MenuCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantUncheckedCreateWithoutRestaurantCuisinesInput = {
@@ -8527,7 +8527,7 @@ export namespace Prisma {
     address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    menus?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
+    menu?: MenuUncheckedCreateNestedManyWithoutRestaurantInput
   }
 
   export type RestaurantCreateOrConnectWithoutRestaurantCuisinesInput = {
@@ -8565,7 +8565,7 @@ export namespace Prisma {
     address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    menus?: MenuUpdateManyWithoutRestaurantNestedInput
+    menu?: MenuUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantUncheckedUpdateWithoutRestaurantCuisinesInput = {
@@ -8574,7 +8574,7 @@ export namespace Prisma {
     address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    menus?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
+    menu?: MenuUncheckedUpdateManyWithoutRestaurantNestedInput
   }
 
   export type RestaurantCuisineCreateManyCuisineInput = {
@@ -8690,7 +8690,7 @@ export namespace Prisma {
     categories?: CategoryUncheckedUpdateManyWithoutMenuNestedInput
   }
 
-  export type MenuUncheckedUpdateManyWithoutMenusInput = {
+  export type MenuUncheckedUpdateManyWithoutMenuInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

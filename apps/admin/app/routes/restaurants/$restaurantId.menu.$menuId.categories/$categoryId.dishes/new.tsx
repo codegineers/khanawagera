@@ -21,7 +21,7 @@ export async function action({ request, params }: ActionArgs) {
 	}
 
 	await createDish({ name, categoryId })
-	return redirect(`/restaurants/${restaurantId}/menus/${menuId}`)
+	return redirect(`/restaurants/${restaurantId}/menu/${menuId}`)
 }
 
 export default function NewDishPage() {
@@ -31,7 +31,7 @@ export default function NewDishPage() {
 		<>
 			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white shadow rounded">
 				<Link
-					to={`/restaurants/${restaurantId}/menus/${menuId}`}
+					to={`/restaurants/${restaurantId}/menu/${menuId}`}
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
 				>
 					New dish

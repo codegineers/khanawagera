@@ -9,22 +9,22 @@ export async function loader({ params }: LoaderArgs) {
 
 	invariant(restaurantId, 'restaurantId not found')
 
-	const menus = await getAllByRestaurantId(restaurantId)
+	const menu = await getAllByRestaurantId(restaurantId)
 
-	if (!menus) {
+	if (!menu) {
 		throw new Response('Not found', { status: 404 })
 	}
 
-	return json({ menus })
+	return json({ menu })
 }
 
 export default function RestaurantMenu() {
-	const { menus } = useLoaderData<typeof loader>()
+	const { menu } = useLoaderData<typeof loader>()
 
 	return (
 		<div>
 			<div>
-				{menus[0].categories.length > 0 && (
+				{menu[0].categories.length > 0 && (
 					<Link to={`categories/new`}>
 						<button
 							type="button"
@@ -34,7 +34,7 @@ export default function RestaurantMenu() {
 						</button>
 					</Link>
 				)}
-				{menus[0].categories.map((category) => (
+				{menu[0].categories.map((category) => (
 					<>
 						<Link
 							to={`categories/${category.id}`}
