@@ -1,27 +1,6 @@
-import { Link, NavLink, useLoaderData, Outlet } from '@remix-run/react'
-import { json } from '@remix-run/node'
-import type { LoaderArgs } from '@remix-run/node'
-import invariant from 'tiny-invariant'
-
-import { getRestaurantById } from '~/models/restaurant.server'
-
-export async function loader({ params }: LoaderArgs) {
-	const { restaurantId } = params
-
-	invariant(restaurantId, 'restaurantId not found')
-
-	const restaurant = await getRestaurantById(restaurantId)
-
-	if (!restaurant) {
-		throw new Response('Restaurant not found', { status: 404 })
-	}
-
-	return json({ restaurant })
-}
+import { Link, NavLink, Outlet } from '@remix-run/react'
 
 export default function RestaurantPage() {
-	const { restaurant } = useLoaderData<typeof loader>()
-
 	return (
 		<div>
 			<div className="grid grid-flow-col justify-between bg-emerald-400 text-white">
@@ -29,7 +8,7 @@ export default function RestaurantPage() {
 					to="/restaurants"
 					className="hover:bg-emerald-300 py-3 px-2 active:bg-emerald-500"
 				>
-					{restaurant.name}
+					Back
 				</Link>
 			</div>
 
@@ -63,13 +42,13 @@ export default function RestaurantPage() {
              p-2 bg-white col-span-4 text-center hover:text-emerald-300 active:text-emerald-500
             `
 						}
-						to={`menu/${restaurant.menu[0].id}`}
+						to="menu"
 					>
 						Menu
 					</NavLink>
 				</div>
 				<div className="bg-white rounded shadow">
-					<Outlet context={{ restaurant }} />
+					<Outlet />
 				</div>
 			</div>
 		</div>

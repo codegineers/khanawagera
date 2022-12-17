@@ -1,12 +1,25 @@
-import type { ActionArgs } from '@remix-run/node'
-import { Form, useOutletContext } from '@remix-run/react'
+import type { LoaderArgs, ActionArgs } from '@remix-run/node'
+import { Form, useLoaderData } from '@remix-run/react'
 import { json } from '@remix-run/node'
 import invariant from 'tiny-invariant'
 
 import Button from '~/components/Button'
 
-import { updateRestaurant } from '~/models/restaurant.server'
-import type { Restaurant } from '~/models/restaurant.server'
+import { getRestaurantById, updateRestaurant } from '~/models/restaurant.server'
+
+export async function loader({ params }: LoaderArgs) {
+	const { restaurantId } = params
+
+	invariant(restaurantId, 'restaurantId not found')
+
+	const restaurant = await getRestaurantById(restaurantId)
+
+	if (!restaurant) {
+		throw new Response('Restaurant not found', { status: 404 })
+	}
+
+	return json({ restaurant })
+}
 
 export async function action({ request, params }: ActionArgs) {
 	const { restaurantId } = params
@@ -44,7 +57,7 @@ export async function action({ request, params }: ActionArgs) {
 }
 
 export default function RestaurantDetailsPage() {
-	const { restaurant } = useOutletContext<{ restaurant: Restaurant }>()
+	const { restaurant } = useLoaderData<typeof loader>()
 
 	return (
 		<div className="p-4">
