@@ -46,33 +46,6 @@ export function getRestaurantById(id: Restaurant['id']) {
 			id: true,
 			name: true,
 			address: true,
-			menu: {
-				select: {
-					id: true,
-					categories: {
-						select: {
-							id: true,
-							name: true,
-							dishes: {
-								select: {
-									id: true,
-									name: true,
-								},
-							},
-						},
-					},
-				},
-			},
-			restaurantCuisines: {
-				select: {
-					cuisine: {
-						select: {
-							id: true,
-							name: true,
-						},
-					},
-				},
-			},
 		},
 		where: { id },
 	})
