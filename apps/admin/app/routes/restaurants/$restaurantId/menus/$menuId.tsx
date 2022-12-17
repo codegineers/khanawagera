@@ -1,8 +1,25 @@
-import { Outlet, Link, useOutletContext } from '@remix-run/react'
+import type { LoaderArgs } from '@remix-run/node'
+import { Outlet, Link, useLoaderData } from '@remix-run/react'
+import { json } from '@remix-run/node'
+import invariant from 'tiny-invariant'
+import { getAllByRestaurantId } from '~/models/menu.server'
+
+export async function loader({ params }: LoaderArgs) {
+	const { restaurantId } = params
+
+	invariant(restaurantId, 'restaurantId not found')
+
+	const menus = await getAllByRestaurantId(restaurantId)
+
+	if (!menus) {
+		throw new Response('Not found', { status: 404 })
+	}
+
+	return json({ menus })
+}
 
 export default function RestaurantMenu() {
-	const { restaurant } = useOutletContext()
-	const { menus } = restaurant
+	const { menus } = useLoaderData<typeof loader>()
 
 	return (
 		<div>
