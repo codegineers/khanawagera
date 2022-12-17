@@ -28,10 +28,7 @@ export async function action({ request }: ActionArgs) {
 	const restaurant = { name, address }
 	const newRestaurant = await createRestaurant(restaurant)
 
-	if (newRestaurant) {
-		await createMenu(newRestaurant.id)
-	}
-
+	await createMenu(newRestaurant.id)
 	return redirect('/restaurants')
 }
 
