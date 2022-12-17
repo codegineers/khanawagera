@@ -1,13 +1,25 @@
 import { redirect } from '@remix-run/node'
+import type { ActionArgs } from '@remix-run/node'
 import { Form, Link, useParams } from '@remix-run/react'
-import { createDish } from '~/models/dish.sever'
+import { createDish } from '~/models/dish.server'
 
 import Button from '~/components/Button'
+import invariant from 'tiny-invariant'
+import { json } from '@remix-run/node'
 
-export async function action({ request, params }) {
+export async function action({ request, params }: ActionArgs) {
 	const { restaurantId, menuId, categoryId } = params
+	invariant(restaurantId, 'restaurantId not found')
+	invariant(menuId, 'menuId not found')
+	invariant(categoryId, 'categoryId not found')
+
 	const formData = await request.formData()
 	const name = formData.get('dish')
+
+	if (typeof name !== 'string' || name.length === 0) {
+		return json({ errors: { name: 'Dish name is required' } }, { status: 400 })
+	}
+
 	await createDish({ name, categoryId })
 	return redirect(`/restaurants/${restaurantId}/menus/${menuId}`)
 }
@@ -43,7 +55,7 @@ export default function NewDishPage() {
 					<div className="grid border-t-2 text-slate-700 mt-4 mx-4 py-4">
 						<div>
 							<Button name="type" value="edit" type="submit" primary full>
-								Save
+								<span>Save</span>
 							</Button>
 						</div>
 					</div>
