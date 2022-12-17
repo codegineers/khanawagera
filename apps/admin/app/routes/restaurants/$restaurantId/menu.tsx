@@ -20,12 +20,13 @@ export async function loader({ params }: LoaderArgs) {
 
 export default function RestaurantMenu() {
 	const { menu } = useLoaderData<typeof loader>()
+	const baseUrl = `${menu[0].id}/categories`
 
 	return (
 		<div>
 			<div>
 				{menu[0].categories.length > 0 && (
-					<Link to={`categories/new`}>
+					<Link to={`${baseUrl}/new`}>
 						<button
 							type="button"
 							className="font-bold border-b-2 text-slate-400 w-full text-left px-4 py-3 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
@@ -37,7 +38,7 @@ export default function RestaurantMenu() {
 				{menu[0].categories.map((category) => (
 					<>
 						<Link
-							to={`categories/${category.id}`}
+							to={`${baseUrl}/${category.id}`}
 							key={category.id}
 							className="block text-slate-700 font-bold py-3 px-4 border-b-2 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
 						>
@@ -47,7 +48,7 @@ export default function RestaurantMenu() {
 						</Link>
 						{category.dishes.map((dish) => (
 							<Link
-								to={`categories/${category.id}/dishes/${dish.id}`}
+								to={`${baseUrl}/${category.id}/dishes/${dish.id}`}
 								key={dish.id}
 								className="block py-3 px-6 border-b-2 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
 							>
@@ -56,7 +57,7 @@ export default function RestaurantMenu() {
 								</span>
 							</Link>
 						))}
-						<Link to={`categories/${category.id}/dishes/new`}>
+						<Link to={`${baseUrl}/${category.id}/dishes/new`}>
 							<button
 								type="button"
 								className="border-b-2 text-slate-400 w-full text-left px-6 py-3 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
@@ -67,7 +68,7 @@ export default function RestaurantMenu() {
 					</>
 				))}
 			</div>
-			<Link to={`categories/new`}>
+			<Link to={`${baseUrl}/new`}>
 				<button
 					type="button"
 					className="font-bold text-slate-400 w-full text-left px-4 py-3 active:bg-emerald-500 border-slate-100 hover:bg-emerald-300 hover:text-white cursor-pointer"
