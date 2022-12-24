@@ -3,13 +3,13 @@ import { json } from "@remix-run/node";
 import type { LoaderArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
-import { getRestaurantById } from "db/dist/models/restaurant";
+import { getAllRestaurantData } from "db/dist/models/restaurant";
 
 export async function loader({ params }: LoaderArgs) {
   const { restaurantId } = params;
   invariant(restaurantId, "restaurantId not found");
 
-  const restaurant = await getRestaurantById(restaurantId);
+  const restaurant = await getAllRestaurantData(restaurantId);
   return json({ restaurant });
 }
 
@@ -18,10 +18,10 @@ export default function RestaurantPage() {
   const {
     name,
     address,
-    menus = [],
+    menu = [],
     restaurantCuisines = [],
   } = restaurant || {};
-  const { categories } = menus[0];
+  const { categories } = menu[0];
 
   return (
     <div className="container my-8 max-w-lg mx-auto px-8 py-4">

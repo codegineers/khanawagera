@@ -1,7 +1,7 @@
 import { Form } from '@remix-run/react'
 import { json, redirect } from '@remix-run/node'
 import type { ActionArgs } from '@remix-run/node'
-import { createRestaurant } from '~/models/restaurant.server'
+import { createRestaurant } from 'db/dist/models/restaurant'
 import { createMenu } from '~/models/menu.server'
 
 import Button from '~/components/Button'

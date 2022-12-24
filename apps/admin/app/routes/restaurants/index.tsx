@@ -1,7 +1,7 @@
 import { useLoaderData, Link, Outlet } from '@remix-run/react'
 import { json } from '@remix-run/node'
 
-import { getRestaurants } from '~/models/restaurant.server'
+import { getRestaurants } from 'db/dist/models/restaurant'
 
 export async function loader() {
 	return json(await getRestaurants())

@@ -5,7 +5,7 @@ import invariant from 'tiny-invariant'
 
 import Button from '~/components/Button'
 
-import { getRestaurantById, updateRestaurant } from '~/models/restaurant.server'
+import { getRestaurantById, updateRestaurant } from 'db/dist/models/restaurant'
 
 export async function loader({ params }: LoaderArgs) {
 	const { restaurantId } = params
